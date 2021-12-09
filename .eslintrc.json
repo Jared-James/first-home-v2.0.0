@@ -18,11 +18,14 @@
         "func-names": "off",
         "no-process-exit": "off",
         "object-shorthand": "off",
+        "arrow-body-style": "off",
         "class-methods-use-this": "off",
         "react/function-component-definition": "off",
         "react/jsx-filename-extension": [
             2,
             { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-        ]
+        ],
+        "import/extensions": "off",
+        "node/no-missing-import": "off"
     }
 }

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Index.module.scss'
+import Header from '../components/header/Header'
 
 const Home: NextPage = () => (
     <div className={styles.container}>
@@ -10,6 +10,7 @@ const Home: NextPage = () => (
             <meta name="First Home" content="First Home" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
+        <Header />
     </div>
 )
 
