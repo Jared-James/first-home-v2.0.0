@@ -17,6 +17,7 @@
         "no-console": "off",
         "func-names": "off",
         "no-process-exit": "off",
+        "node/no-unsupported-features/es-syntax": "off",
         "object-shorthand": "off",
         "arrow-body-style": "off",
         "@next/next/no-img-element": "off",
