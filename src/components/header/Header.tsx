@@ -2,7 +2,7 @@ import styles from './Header.module.scss'
 
 const Header = () => {
     return (
-        <header className={styles.container}>
+        <header className={styles.navigation}>
             <div className={styles.title}>
                 <h1>First Home</h1>
             </div>
@@ -10,7 +10,7 @@ const Header = () => {
                 <nav>
                     <ul className={styles.list}>
                         <li className={styles.list__item}>About</li>
-                        <li className={styles.list__item}>Mortage</li>
+                        <li className={styles.list__item}>Mortgage</li>
                         <li className={styles.list__item}>Savings</li>
                         <li className={styles.list__item}>Results</li>
                     </ul>
