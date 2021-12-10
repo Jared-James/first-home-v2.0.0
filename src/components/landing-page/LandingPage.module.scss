@@ -1,0 +1,67 @@
+@use 'styles/utilities/font';
+
+.container {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 1000px) {
+        flex-direction: row;
+    }
+}
+
+.container__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container__image_box {
+    display: flex;
+}
+
+.container__image_item {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    width: 100%;
+
+    img {
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.container__steps {
+    margin-left: 25px;
+    // outline: 3px solid orange;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.container__steps_item {
+    // outline: 3px solid purple;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.title__text {
+    font-size: font.$xxl-size;
+    padding: 10px;
+}
+
+.body__text {
+    font-size: font.$xl-size;
+    padding: 10px;
+}

@@ -19,6 +19,7 @@
         "no-process-exit": "off",
         "object-shorthand": "off",
         "arrow-body-style": "off",
+        "@next/next/no-img-element": "off",
         "class-methods-use-this": "off",
         "react/function-component-definition": "off",
         "react/jsx-filename-extension": [
