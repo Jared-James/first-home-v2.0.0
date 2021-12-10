@@ -13,6 +13,7 @@ const Home: NextPage = () => (
         </Head>
         <Header />
         <LandingPage />
+        <div style={{ height: '100vh' }}></div>
     </div>
 )
 

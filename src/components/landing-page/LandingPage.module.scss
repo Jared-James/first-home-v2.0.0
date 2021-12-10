@@ -4,6 +4,7 @@
     height: 85vh;
     display: flex;
     flex-direction: column;
+
     @media screen and (min-width: 1000px) {
         flex-direction: row;
     }
@@ -15,13 +16,13 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 0 30px;
+    @media screen and (min-width: 1000px) {
+        padding: 0 30px;
+    }
 }
 
-.container__image_box {
-    display: flex;
-}
-
-.container__image_item {
+.container__image_picture {
     display: flex;
     flex-direction: row;
     padding: 5px;
@@ -35,7 +36,6 @@
 
 .container__steps {
     margin-left: 25px;
-    // outline: 3px solid orange;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,6 @@
 }
 
 .container__steps_item {
-    // outline: 3px solid purple;
     height: 100%;
     display: flex;
     flex-direction: column;

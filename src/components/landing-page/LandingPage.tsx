@@ -4,10 +4,8 @@ const LandingPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.container__image}>
-                <div className={styles.container__image_box}>
-                    <div className={styles.container__image_item}>
-                        <img src="/house.jfif" alt="house in the woods" />
-                    </div>
+                <div className={styles.container__image_picture}>
+                    <img src="/house.jfif" alt="house in the woods" />
                 </div>
             </div>
             <div className={styles.container__steps}>
