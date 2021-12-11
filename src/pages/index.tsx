@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/Index.module.scss'
+import Counter from '../components/counter/Counter'
 import Header from '../components/header/Header'
 import LandingPage from '../components/landing-page/LandingPage'
 
@@ -13,7 +14,9 @@ const Home: NextPage = () => (
         </Head>
         <Header />
         <LandingPage />
-        <div style={{ height: '100vh' }}></div>
+        <div style={{ height: '100vh' }}>
+            <Counter />
+        </div>
     </div>
 )
 

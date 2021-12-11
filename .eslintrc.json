@@ -14,8 +14,10 @@
     "rules": {
         "prettier/prettier": "error",
         "no-unused-vars": "warn",
+        "default-param-last": "off",
         "no-console": "off",
         "func-names": "off",
+        "import/prefer-default-export": "off",
         "no-process-exit": "off",
         "node/no-unsupported-features/es-syntax": "off",
         "object-shorthand": "off",
