@@ -94,7 +94,6 @@ const Estimated = () => {
                     <p className={styles.totals__item}>
                         <span> Total amount payable:</span>
                         <span>
-                            {' '}
                             {numeral(totalAmountPayable).format('$0,0')}
                         </span>
                     </p>
