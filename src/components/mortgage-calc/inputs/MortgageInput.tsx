@@ -1,8 +1,8 @@
-import { useState, ChangeEvent } from 'react'
 import Button from '@mui/material/Button'
+import { useState, ChangeEvent } from 'react'
 import InputMui from '../../utils/input-mui/InputMui'
-import { useAppDispatch } from '../../../redux/hooks'
 import style from './mortgageInput.module.scss'
+import { useAppDispatch } from '../../../redux/hooks'
 import { updateHousePrice } from '../../../redux/features/mortgageCalculator'
 
 const MortgageInput = () => {
