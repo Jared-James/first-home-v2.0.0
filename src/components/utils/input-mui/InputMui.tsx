@@ -17,6 +17,14 @@ interface MuiInput {
     label?: string
 }
 
+const stylesObj = {
+    tooltip: {
+        transform: `translateY(-5px)`,
+        fontSize: `18px`,
+        margin: `5px`,
+    },
+}
+
 const InputMui = ({
     onChange,
     value,
@@ -53,13 +61,11 @@ const InputMui = ({
                 className={styles.textField}
             />
 
-            <Tooltip title="huh">
-                <HelpOutlineIcon
-                    style={{
-                        fontSize: '24px',
-                        paddingLeft: '0.4rem',
-                    }}
-                />
+            <Tooltip
+                title="This will be the tool tip"
+                style={stylesObj.tooltip}
+            >
+                <HelpOutlineIcon />
             </Tooltip>
         </div>
     )

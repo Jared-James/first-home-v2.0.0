@@ -1,7 +1,7 @@
 import numeral from 'numeral'
 import React, { useEffect, useState } from 'react'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
 import { selectAll } from '../../../redux/features/mortgageCalculator'
 import { useAppSelector } from '../../../redux/hooks'
 import styles from './output.module.scss'
@@ -55,31 +55,27 @@ const Estimated = () => {
         <div className={styles.container}>
             <div className={styles.container__circle}>
                 <div className={styles.repayments}>
-                    <p>
-                        Estimated
-                        <Select
-                            value={timeFrame}
-                            onChange={(e: any) =>
-                                calculatePayments(e.target.value)
-                            }
-                            style={{
-                                marginLeft: '0.7rem',
-                                marginRight: '0.5rem',
-                                minWidth: '125.06px',
-                                fontSize: '16px',
-                                transform: 'translateY(0.1rem)',
-                            }}
-                            variant="standard"
-                            MenuProps={{
-                                disableScrollLock: true,
-                            }}
-                        >
-                            <MenuItem value="weekly">weekly</MenuItem>
-                            <MenuItem value="fortnightly">fortnightly</MenuItem>
-                            <MenuItem value="monthly">monthly</MenuItem>
-                        </Select>
-                        payment:
-                    </p>
+                    Estimated
+                    <Select
+                        value={timeFrame}
+                        onChange={(e: any) => calculatePayments(e.target.value)}
+                        style={{
+                            marginLeft: '0.7rem',
+                            marginRight: '0.5rem',
+                            minWidth: '125.06px',
+                            fontSize: '16px',
+                            transform: 'translateY(0.1rem)',
+                        }}
+                        variant="standard"
+                        MenuProps={{
+                            disableScrollLock: true,
+                        }}
+                    >
+                        <MenuItem value="weekly">weekly</MenuItem>
+                        <MenuItem value="fortnightly">fortnightly</MenuItem>
+                        <MenuItem value="monthly">monthly</MenuItem>
+                    </Select>
+                    payment:
                     <div className={styles.repayments__item}>
                         {numeral(repayments).format('$0,0')}
                     </div>
