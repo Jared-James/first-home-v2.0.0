@@ -15,7 +15,8 @@ const Home: NextPage = () => (
         <Header />
         <LandingPage />
         <MortgageCalc />
-        <LandingPage />
+        <MortgageCalc />
+        <MortgageCalc />
     </div>
 )
 

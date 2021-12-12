@@ -1,10 +1,10 @@
 @use 'styles/utilities/font';
 
 .container {
-    min-height: 90vh;
+    min-height: 93vh;
     display: flex;
     flex-direction: column;
-
+    background: #fff;
     @media screen and (min-width: 1000px) {
         flex-direction: row;
     }

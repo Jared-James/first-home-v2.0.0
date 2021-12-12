@@ -22,6 +22,7 @@ const MortgageCalc = () => {
                     <Output />
                 </div>
             </div>
+            <img className={styles.tree} alt="tree" src="/tree.svg" />
         </div>
     )
 }
