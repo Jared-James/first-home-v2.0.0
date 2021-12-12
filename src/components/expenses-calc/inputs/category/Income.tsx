@@ -5,6 +5,7 @@ import {
     calculateExpenses,
     getIncome,
 } from '../../../../redux/features/expenses-calc'
+
 const Income = () => {
     const { income, otherIncome } = useAppSelector(getIncome)
     const dispatch = useAppDispatch()
