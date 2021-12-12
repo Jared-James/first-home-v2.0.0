@@ -1,14 +1,10 @@
 @use 'styles/utilities/font';
 
 .container {
-    min-height: 95vh;
-    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 100px 5%;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     background: #fff;
     position: relative;
     overflow: hidden;
@@ -16,7 +12,7 @@
 
 .title {
     font-size: font.$xl-size;
-    font-weight: 500;
+    margin-top: 45px;
     @media screen and (min-width: 1200px) {
         font-size: font.$xxxl-size;
         margin-top: 120px;
@@ -41,12 +37,17 @@
         animation: gradient 7s ease-in infinite;
         background: linear-gradient(-45deg, #002884, #e73c7e, #23a6d5, #757ce8);
         background-size: 400% 400%;
-        transform: translateY(-4rem);
+        transform: translateY(-3rem);
+
+        @media screen and (min-width: 1200px) {
+            font-size: font.$xxxl-size;
+            transform: translateY(-4rem);
+        }
     }
 }
 
 .instructions {
-    padding: 25px 0;
+    padding: 15px 10px 5px 10px;
     width: 100%;
     font-size: font.$lg-size;
     text-align: left;
@@ -102,6 +103,7 @@
 
     @media screen and (min-width: 1200px) {
         margin-left: 5%;
+        margin-right: 5%;
         width: 50%;
         height: 600px;
     }

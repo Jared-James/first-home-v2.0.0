@@ -10,7 +10,7 @@ const MortgageCalc = () => {
             </div>
             <div className={styles.instructions}>
                 <p>
-                    {`  Enter the purchase price, down payment, annual interest
+                    {`Enter the purchase price, down payment, annual interest
                     rate, and loan term in the appropriate fields. You'll be
                     able to see how much you owe in repayments, as well as the
                     overall amount due`}
