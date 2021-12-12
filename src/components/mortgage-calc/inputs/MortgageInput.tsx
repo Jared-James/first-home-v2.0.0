@@ -26,28 +26,29 @@ const MortgageInput = () => {
             <InputMui
                 name="housePrice"
                 onChange={handleChange}
-                value={inputs.housePrice}
                 currencySymbol="$"
                 label="House Price"
             />
             <InputMui
                 name="deposit"
                 onChange={handleChange}
-                value={inputs.deposit}
                 currencySymbol="$"
                 label="Deposit"
             />
             <InputMui
                 name="interest"
                 onChange={handleChange}
-                value={inputs.interest}
                 currencySymbol="%"
                 label="Interest per annum"
+                decimalPlacesShownOnFocus={2}
+                decimalPlacesShownOnBlur={2}
+                decimalPlaces={2}
+                decimalCharacter="."
+                placeholder={3.55}
             />
             <InputMui
                 name="lengthOfLoan"
                 onChange={handleChange}
-                value={inputs.lengthOfLoan}
                 currencySymbol="Years"
                 label="Length of Loan"
             />

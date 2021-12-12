@@ -5,51 +5,46 @@ import styles from './inputMui.module.scss'
 
 interface MuiInput {
     onChange: any
-    value: number
     name: string
     currencySymbol?: string
-    minimumValue?: number
     decimalPlacesShownOnFocus?: number
     decimalPlacesShownOnBlur?: number
     decimalPlaces?: number
-    maximumValue?: number
     isMobile?: boolean
     label?: string
+    decimalCharacter?: string
+    placeholder?: number
 }
 
-const stylesObj = {
-    tooltip: {
-        transform: `translateY(-5px)`,
-        fontSize: `18px`,
-        margin: `5px`,
-    },
+const tooltipStyles = {
+    transform: `translateY(-5px)`,
+    fontSize: `18px`,
+    margin: `5px`,
 }
 
 const InputMui = ({
     onChange,
-    value,
     name,
     currencySymbol,
-    minimumValue,
     decimalPlacesShownOnFocus,
     decimalPlacesShownOnBlur,
     decimalPlaces,
-    maximumValue,
     isMobile,
     label,
+    decimalCharacter,
+    placeholder,
 }: MuiInput) => {
     return (
         <div className={styles.container}>
             <CurrencyTextField
                 onChange={onChange}
-                label={label || ''}
-                value={value || 0}
+                label={label || 0}
+                placeholder={placeholder || 0}
+                decimalCharacter={decimalCharacter || '.'}
                 name={name || ''}
                 currencySymbol={currencySymbol}
                 digitGroupSeparator=","
                 autoComplete="off"
-                minimumValue={minimumValue || '0'}
-                maximumValue={maximumValue}
                 decimalPlacesShownOnFocus={decimalPlacesShownOnFocus || 0}
                 decimalPlacesShownOnBlur={decimalPlacesShownOnBlur || 0}
                 decimalPlaces={decimalPlaces || 2}
@@ -61,10 +56,7 @@ const InputMui = ({
                 className={styles.textField}
             />
 
-            <Tooltip
-                title="This will be the tool tip"
-                style={stylesObj.tooltip}
-            >
+            <Tooltip title="This will be the tool tip" style={tooltipStyles}>
                 <HelpOutlineIcon />
             </Tooltip>
         </div>
