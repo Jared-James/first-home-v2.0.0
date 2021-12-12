@@ -1,0 +1,93 @@
+@use 'styles/utilities/font';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 5%;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.title {
+    font-size: font.$xl-size;
+    margin-top: 45px;
+    @media screen and (min-width: 1200px) {
+        font-size: font.$xxl-size;
+        margin-top: 120px;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    &::after {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 1.3px;
+        animation: gradient 7s ease-in infinite;
+        background: linear-gradient(-45deg, #002884, #e73c7e, #23a6d5, #757ce8);
+        background-size: 400% 400%;
+        transform: translateY(-3rem);
+
+        @media screen and (min-width: 1200px) {
+            font-size: font.$xxxl-size;
+            transform: translateY(-4rem);
+        }
+    }
+}
+
+.instructions {
+    padding: 15px 10px 5px 10px;
+    width: 100%;
+    font-size: font.$lg-size;
+    text-align: left;
+    margin: 25px 0 0px 0;
+
+    @media screen and (min-width: 1200px) {
+        text-align: center;
+        margin: 25px 0 45px 0;
+        width: 50%;
+    }
+}
+
+.calculator__slider {
+    text-align: center;
+
+    width: 70%;
+}
+
+.calculaotr__container {
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    // outline: 1px solid orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 40px;
+}
+
+.calculator__input {
+    outline: 1px solid green;
+}

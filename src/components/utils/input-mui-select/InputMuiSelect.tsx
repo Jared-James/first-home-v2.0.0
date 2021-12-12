@@ -1,7 +1,9 @@
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'
 import Tooltip from '@material-ui/core/Tooltip'
-import styles from './inputMui.module.scss'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import styles from './inputMuiSelect.module.scss'
 
 interface MuiInput {
     onChange: any
@@ -15,6 +17,8 @@ interface MuiInput {
     decimalCharacter?: string
     placeholder?: number
     value?: any
+    timeFrameValue?: any
+    handleTimeFrame?: any
 }
 
 const tooltipStyles = {
@@ -23,7 +27,7 @@ const tooltipStyles = {
     margin: `5px`,
 }
 
-const InputMui = ({
+const InputMuiSelect = ({
     onChange,
     name,
     currencySymbol,
@@ -35,6 +39,8 @@ const InputMui = ({
     decimalCharacter,
     placeholder,
     value,
+    handleTimeFrame,
+    timeFrameValue,
 }: MuiInput) => {
     return (
         <div className={styles.container}>
@@ -58,6 +64,27 @@ const InputMui = ({
                 }}
                 className={styles.textField}
             />
+            <Select
+                value={timeFrameValue}
+                name={name}
+                onChange={handleTimeFrame}
+                style={{
+                    marginLeft: '0.7rem',
+                    marginRight: '0.5rem',
+                    minWidth: '125.06px',
+                    fontSize: '16px',
+                    transform: 'translateY(22px)',
+                    height: '50%',
+                }}
+                variant="standard"
+                MenuProps={{
+                    disableScrollLock: true,
+                }}
+            >
+                <MenuItem value="weekly">weekly</MenuItem>
+                <MenuItem value="fortnightly">fortnightly</MenuItem>
+                <MenuItem value="monthly">monthly</MenuItem>
+            </Select>
 
             <Tooltip title="This will be the tool tip" style={tooltipStyles}>
                 <HelpOutlineIcon />
@@ -66,4 +93,4 @@ const InputMui = ({
     )
 }
 
-export default InputMui
+export default InputMuiSelect

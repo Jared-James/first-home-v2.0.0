@@ -17,6 +17,7 @@
         "default-param-last": "off",
         "no-console": "off",
         "no-param-reassign": "off",
+        "react/jsx-props-no-spreading": "off",
         "react/require-default-props": "off",
         "func-names": "off",
         "import/prefer-default-export": "off",
@@ -27,6 +28,7 @@
         "@next/next/no-img-element": "off",
         "class-methods-use-this": "off",
         "react/function-component-definition": "off",
+        "import/no-cycle": "off",
         "react/jsx-filename-extension": [
             2,
             { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
