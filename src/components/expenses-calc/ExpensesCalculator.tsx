@@ -1,6 +1,7 @@
 import styles from './ExpensesCalculator.module.scss'
 import StepperComponent from './stepper-component/StepperComponent'
 import InputComponent from './inputs/InputComponent'
+import OutputComponent from './outputs/OutputComponent'
 
 const ExpensesCalculator = () => {
     return (
@@ -25,12 +26,8 @@ const ExpensesCalculator = () => {
                         <InputComponent />
                     </div>
                     <div className={styles.calculator__output}>
-                        <div className={styles.calculator__output_top}>top</div>
-                        <div className={styles.calculator__output_middle}>
-                            middle
-                        </div>
-                        <div className={styles.calculator__output_bottom}>
-                            bottom
+                        <div className={styles.calculator__output_top}>
+                            <OutputComponent />
                         </div>
                     </div>
                 </div>

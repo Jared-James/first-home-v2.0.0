@@ -1,5 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { getStepperCount, calculateExpenses } from './actions'
+import {
+    getStepperCount,
+    calculateExpenses,
+    calculateTimeframe,
+} from './actions'
 
 // stepper component state: keeps track of what position in the stepper the user is.
 
@@ -48,6 +52,40 @@ export const expensesReducer = createReducer(
     initialStateExpenses,
     (builder) => {
         builder.addCase(calculateExpenses, (state, action) => {
+            return { ...state, ...action.payload }
+        })
+    }
+)
+
+// expenses calculator timeframe state
+
+type TimeframeState = {
+    income: string
+    otherIncome: string
+    rent: string
+    powerWater: string
+    homeContents: string
+    tvInternet: string
+    phone: string
+    miscellaneous: string
+}
+
+const initialStateTimeframe: TimeframeState = {
+    income: 'monthly',
+    otherIncome: 'monthly',
+    rent: 'monthly',
+    powerWater: 'monthly',
+    homeContents: 'monthly',
+    tvInternet: 'monthly',
+    phone: 'monthly',
+    miscellaneous: 'monthly',
+}
+
+export const timeframeReducer = createReducer(
+    initialStateTimeframe,
+    (builder) => {
+        builder.addCase(calculateTimeframe, (state, action) => {
+            console.log('payload redux', action)
             return { ...state, ...action.payload }
         })
     }

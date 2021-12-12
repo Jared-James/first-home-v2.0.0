@@ -4,11 +4,14 @@ import { useAppSelector, useAppDispatch } from '../../../../redux/hooks'
 import {
     calculateExpenses,
     getIncome,
+    getTimeframe,
+    calculateTimeframe,
 } from '../../../../redux/features/expenses-calc'
 
 const Housing = () => {
     const { rent, powerWater, homeContents, tvInternet, phone, miscellaneous } =
         useAppSelector(getIncome)
+    const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
     const [inputs, setInputs] = useState({
@@ -20,17 +23,18 @@ const Housing = () => {
         miscellaneous: miscellaneous || 0,
     })
     const [timeFrame, setTimeFrame] = useState({
-        rent: 'monthly',
-        powerWater: 'monthly',
-        homeContents: 'monthly',
-        tvInternet: 'monthly',
-        phone: 'monthly',
-        miscellaneous: 'monthly',
+        rent: alltimeFrames.rent || 'monthly',
+        powerWater: alltimeFrames.powerWater || 'monthly',
+        homeContents: alltimeFrames.homeContents || 'monthly',
+        tvInternet: alltimeFrames.tvInternet || 'monthly',
+        phone: alltimeFrames.phone || 'monthly',
+        miscellaneous: alltimeFrames.miscellaneous || 'monthly',
     })
 
     useEffect(() => {
         dispatch(calculateExpenses(inputs))
-    }, [dispatch, inputs])
+        dispatch(calculateTimeframe(timeFrame))
+    }, [dispatch, inputs, timeFrame])
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputs((prevState) => ({

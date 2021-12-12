@@ -1,12 +1,17 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import { inputReducer } from './features/mortgageCalculator'
-import { expensesReducer, stepperReducer } from './features/expenses-calc'
+import {
+    expensesReducer,
+    stepperReducer,
+    timeframeReducer,
+} from './features/expenses-calc'
 
 export const store = configureStore({
     reducer: {
         mortgageCalclator: inputReducer,
         stepperReducer,
         expensesReducer,
+        timeframeReducer,
     },
     devTools: true,
 })
