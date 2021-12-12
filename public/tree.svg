@@ -4,22 +4,11 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1140.000000pt" height="1280.000000pt" viewBox="0 0 1140.000000 1280.000000"
  preserveAspectRatio="xMidYMid meet">
-      <linearGradient id="lg" x1="0.5" y1="1" x2="0.5" y2="0">
-          <stop offset="0%" stop-opacity="1" stop-color="#757ce8"/>
-          <stop offset="40%" stop-opacity="1" stop-color="#757ce8">
-            <animate attributeName="offset" values="0;1;0" repeatCount="once" dur="5000s" begin="0s"/>
-          </stop>
-          <stop offset="40%" stop-opacity="0" stop-color="#757ce8">
-            <animate attributeName="offset" values="0;1;0" repeatCount="once" dur="120s"  begin="0s"/>
-          </stop>
-          <stop offset="100%" stop-opacity="0" stop-color="#757ce8"/>
-      </linearGradient>
 <metadata>
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="url(#lg)" stroke="crimson">
-        
+fill="#000000" stroke="none">
 <path d="M5978 12783 c-85 -54 -47 -182 55 -183 51 0 97 43 98 92 l1 33 19
 -43 c51 -109 65 -336 29 -464 -11 -40 -20 -85 -20 -100 0 -16 -4 -28 -10 -28
 -5 0 -10 10 -10 23 0 45 -41 182 -75 253 -38 78 -113 168 -180 214 -39 27

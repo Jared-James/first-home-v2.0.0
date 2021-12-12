@@ -5,7 +5,9 @@ import styles from './MortgageCalc.module.scss'
 const MortgageCalc = () => {
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>Mortgage Repayment</h2>
+            <div>
+                <h2 className={styles.title}>Mortgage Repayment</h2>
+            </div>
             <div className={styles.instructions}>
                 <p>
                     {`  Enter the purchase price, down payment, annual interest
