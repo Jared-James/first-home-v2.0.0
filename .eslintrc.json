@@ -16,6 +16,8 @@
         "no-unused-vars": "warn",
         "default-param-last": "off",
         "no-console": "off",
+        "no-param-reassign": "off",
+        "react/require-default-props": "off",
         "func-names": "off",
         "import/prefer-default-export": "off",
         "no-process-exit": "off",

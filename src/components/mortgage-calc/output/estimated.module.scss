@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.repayments {
+}
+
+.repayments__item {
+    text-align: center;
+    padding: 15px;
+    font-size: 28px;
+}
+
+.totals {
+    width: 100%;
+}
+
+.totals__item {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px;
+    span {
+        margin: 0px 10px;
+    }
+}

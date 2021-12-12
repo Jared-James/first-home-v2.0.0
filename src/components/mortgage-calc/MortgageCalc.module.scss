@@ -1,0 +1,64 @@
+@use 'styles/utilities/font';
+
+.container {
+    height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.title {
+    font-size: font.$xxxl-size;
+    font-weight: 500;
+}
+
+.instructions {
+    padding: 25px 0;
+    width: 50%;
+    font-size: font.$lg-size;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.calculator {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    @media screen and (min-width: 1000px) {
+        flex-direction: row;
+    }
+}
+
+.calculator__input {
+    // outline: 1px solid orange;
+    margin-left: 0;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 63px;
+    @media screen and (min-width: 1000px) {
+        margin-left: 15%;
+        width: 50%;
+    }
+}
+
+.calculator__output {
+    // outline: 1px solid purple;
+    margin-left: 0;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 1000px) {
+        margin-right: 15%;
+        width: 50%;
+    }
+}

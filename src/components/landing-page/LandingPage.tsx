@@ -21,7 +21,9 @@ const LandingPage = () => {
                             Using the first mortgage calculator, we will find
                             out what your mortgage repayments will be
                         </p>
-                        <Button variant="outlined">Continue</Button>
+                        <Button variant="outlined" type="submit">
+                            Continue
+                        </Button>
                     </div>
                 </div>
                 <div className={styles.container__steps_item}>
@@ -35,7 +37,9 @@ const LandingPage = () => {
                             We then look your spending habits and find out where
                             your money is going
                         </p>
-                        <Button variant="outlined">Continue</Button>
+                        <Button variant="outlined" type="submit">
+                            Continue
+                        </Button>
                     </div>
                 </div>
                 <div className={styles.container__steps_item}>
@@ -50,7 +54,9 @@ const LandingPage = () => {
                             out how long it will be before you reach your
                             deposit
                         </p>
-                        <Button variant="outlined">Continue</Button>
+                        <Button variant="outlined" type="submit">
+                            Continue
+                        </Button>
                     </div>
                 </div>
             </div>
