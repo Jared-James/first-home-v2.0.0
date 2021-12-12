@@ -15,7 +15,7 @@ interface MuiInput {
     isMobile?: boolean
     label?: string
     decimalCharacter?: string
-    placeholder?: number
+    placeholder?: string
     value?: any
     timeFrameValue?: any
     handleTimeFrame?: any
@@ -47,7 +47,7 @@ const InputMuiSelect = ({
             <CurrencyTextField
                 onChange={onChange}
                 label={label || 0}
-                placeholder={placeholder || 0}
+                placeholder={placeholder || '0'}
                 decimalCharacter={decimalCharacter || '.'}
                 name={name || ''}
                 currencySymbol={currencySymbol}

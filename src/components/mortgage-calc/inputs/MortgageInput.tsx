@@ -44,7 +44,7 @@ const MortgageInput = () => {
                 decimalPlacesShownOnBlur={2}
                 decimalPlaces={2}
                 decimalCharacter="."
-                placeholder={3.55}
+                placeholder="3.55"
             />
             <InputMui
                 name="lengthOfLoan"
