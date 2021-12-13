@@ -24,6 +24,7 @@ function getStepsDesktop() {
 }
 
 const StepperComponent = () => {
+    let steps
     const dispatch = useAppDispatch()
     const [activeStep, setActiveStep] = useState(0)
 
@@ -42,8 +43,6 @@ const StepperComponent = () => {
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-width: 1400px)',
     })
-
-    let steps
 
     if (!isDesktopOrLaptop) {
         steps = getSteps()

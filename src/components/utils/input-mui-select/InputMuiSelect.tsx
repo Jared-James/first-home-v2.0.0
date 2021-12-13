@@ -86,9 +86,14 @@ const InputMuiSelect = ({
                 <MenuItem value="monthly">monthly</MenuItem>
             </Select>
 
-            <Tooltip title="This will be the tool tip" style={tooltipStyles}>
-                <HelpOutlineIcon />
-            </Tooltip>
+            <span className={styles.tooltip}>
+                <Tooltip
+                    title="This will be the tool tip"
+                    style={tooltipStyles}
+                >
+                    <HelpOutlineIcon />
+                </Tooltip>
+            </span>
         </div>
     )
 }

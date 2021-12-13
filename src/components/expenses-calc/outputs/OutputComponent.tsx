@@ -205,7 +205,7 @@ const OutputComponent = () => {
                             marginRight: '5px',
                         }}
                     />
-                    Housing expenses:
+                    Housing Expenses:
                 </p>
                 <p className={styles.output}>
                     {numeral(totalHomeExpenses).format('$0,0')}
@@ -233,7 +233,7 @@ const OutputComponent = () => {
                             marginRight: '5px',
                         }}
                     />
-                    regular Expenses:
+                    Regular Expenses:
                 </p>
                 <p className={styles.output}>
                     {numeral(regularExpensesTotal).format('$0,0')}

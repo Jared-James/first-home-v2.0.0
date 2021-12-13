@@ -6,8 +6,8 @@ import OutputComponent from './outputs/OutputComponent'
 const ExpensesCalculator = () => {
     return (
         <div className={styles.container}>
-            <div className={styles.title}>
-                <h2>Income and Expenses</h2>
+            <div>
+                <h2 className={styles.title}>Income and Expenses</h2>
             </div>
             <div className={styles.instructions}>
                 <p>
