@@ -73,7 +73,7 @@ const InputMuiSelect = ({
                     marginRight: '0.5rem',
                     minWidth: '125.06px',
                     fontSize: '16px',
-                    transform: 'translateY(22px)',
+                    transform: 'translateY(11px)',
                     height: '50%',
                 }}
                 variant="standard"

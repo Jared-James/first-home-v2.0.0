@@ -68,14 +68,12 @@
 }
 
 .calculaotr__container {
-    background: lightblue;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .calculator {
-    // outline: 1px solid orange;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,5 +87,4 @@
 }
 
 .calculator__input {
-    outline: 1px solid green;
 }

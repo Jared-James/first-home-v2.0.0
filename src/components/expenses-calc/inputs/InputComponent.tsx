@@ -6,6 +6,7 @@ import Everyday from './category/Everyday'
 import Regular from './category/Regular'
 import Personal from './category/Personal'
 import Savings from './category/Savings'
+import styles from './inputComponent.module.scss'
 
 const InputComponent = () => {
     const stepCount = useAppSelector(getStepper)
@@ -29,7 +30,11 @@ const InputComponent = () => {
         }
     }
 
-    return <div>{renderInputsByStepperCount(stepCount)}</div>
+    return (
+        <div className={styles.container}>
+            {renderInputsByStepperCount(stepCount)}
+        </div>
+    )
 }
 
 export default InputComponent

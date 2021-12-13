@@ -2,6 +2,7 @@ import React from 'react'
 import numeral from 'numeral'
 import { getIncome, getTimeframe } from '../../../redux/features/expenses-calc'
 import { useAppSelector } from '../../../redux/hooks'
+import styles from './outputComponent.module.scss'
 
 const OutputComponent = () => {
     const {
@@ -177,32 +178,43 @@ const OutputComponent = () => {
     ).toFixed(0)
 
     return (
-        <div>
-            <p>output monthly</p>
-            <p>
-                Income + other income
-                {numeral(totalIncome).format('$0,0')}
-            </p>
-            <p>
-                Housing expenses
-                {numeral(totalHomeExpenses).format('$0,0')}
-            </p>
-            <p>
-                Everyday Expenses
-                {numeral(totalEverydayExpenses).format('$0,0')}
-            </p>
-            <p>
-                regular Expenses
-                {numeral(regularExpensesTotal).format('$0,0')}
-            </p>
-            <p>
-                Personal Expenses
-                {numeral(personalExpensesTotal).format('$0,0')}
-            </p>
-            <p>
-                Savings Expenses
-                {numeral(savingsExpensesTotal).format('$0,0')}
-            </p>
+        <div className={styles.container}>
+            <div className={styles.container__output}>
+                <p className={styles.title}>Total Income:</p>
+                <p className={styles.output}>
+                    {numeral(totalIncome).format('$0,0')}
+                </p>
+            </div>
+            <div className={styles.container__output}>
+                <p className={styles.title}>Housing expenses:</p>
+                <p className={styles.output}>
+                    {numeral(totalHomeExpenses).format('$0,0')}
+                </p>
+            </div>
+            <div className={styles.container__output}>
+                <p className={styles.title}>Everyday Expenses:</p>
+                <p className={styles.output}>
+                    {numeral(totalEverydayExpenses).format('$0,0')}
+                </p>
+            </div>
+            <div className={styles.container__output}>
+                <p className={styles.title}>regular Expenses:</p>
+                <p className={styles.output}>
+                    {numeral(regularExpensesTotal).format('$0,0')}
+                </p>
+            </div>
+            <div className={styles.container__output}>
+                <p className={styles.title}>Personal Expenses:</p>
+                <p className={styles.output}>
+                    {numeral(personalExpensesTotal).format('$0,0')}
+                </p>
+            </div>
+            <div className={styles.container__output}>
+                <p className={styles.title}>Total Savings:</p>
+                <p className={styles.output}>
+                    {numeral(savingsExpensesTotal).format('$0,0')}
+                </p>
+            </div>
         </div>
     )
 }
