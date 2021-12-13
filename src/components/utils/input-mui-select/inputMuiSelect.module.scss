@@ -1,6 +1,11 @@
 .container {
     display: flex;
     padding: 0 10px;
+    width: 100%;
+
+    @media screen and (min-width: 900px) {
+        width: 404.3px;
+    }
 }
 
 .textField {
