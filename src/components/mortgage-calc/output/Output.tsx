@@ -65,6 +65,7 @@ const Estimated = () => {
                             minWidth: '125.06px',
                             fontSize: '16px',
                             transform: 'translateY(0.1rem)',
+                            height: '25%',
                         }}
                         variant="standard"
                         MenuProps={{

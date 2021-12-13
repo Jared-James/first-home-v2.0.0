@@ -72,9 +72,9 @@ const InputMuiSelect = ({
                     marginLeft: '0.7rem',
                     marginRight: '0.5rem',
                     minWidth: '125.06px',
-                    fontSize: '16px',
-                    transform: 'translateY(11px)',
-                    height: '50%',
+                    fontSize: '18px',
+                    transform: 'translateY(35px)',
+                    height: '25%',
                 }}
                 variant="standard"
                 MenuProps={{
