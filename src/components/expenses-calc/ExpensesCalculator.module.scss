@@ -62,15 +62,23 @@
 }
 
 .calculator__slider {
-    text-align: center;
+    text-align: left;
+    width: 90%;
 
-    width: 70%;
+    @media screen and (min-width: 1200px) {
+        text-align: center;
+        width: 70%;
+    }
 }
 
 .calculaotr__container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
+    @media screen and (min-width: 900px) {
+        flex-direction: row;
+    }
 }
 
 .calculator {
@@ -87,4 +95,7 @@
 }
 
 .calculator__input {
+}
+
+.calculator__output {
 }

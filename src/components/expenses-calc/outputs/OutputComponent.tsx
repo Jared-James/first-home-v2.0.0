@@ -1,5 +1,8 @@
 import React from 'react'
+import Button from '@mui/material/Button'
 import numeral from 'numeral'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
+import CardContent from '@material-ui/core/CardContent'
 import { getIncome, getTimeframe } from '../../../redux/features/expenses-calc'
 import { useAppSelector } from '../../../redux/hooks'
 import styles from './outputComponent.module.scss'
@@ -179,38 +182,89 @@ const OutputComponent = () => {
 
     return (
         <div className={styles.container}>
+            <Button variant="outlined">Show Expense Breakdown</Button>
             <div className={styles.container__output}>
-                <p className={styles.title}>Total Income:</p>
+                <p className={styles.title}>
+                    <KeyboardArrowRightIcon
+                        style={{
+                            color: '#3498DB',
+                            marginRight: '5px',
+                        }}
+                    />
+                    Total Income:
+                </p>
                 <p className={styles.output}>
                     {numeral(totalIncome).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
-                <p className={styles.title}>Housing expenses:</p>
+                <p className={styles.title}>
+                    <KeyboardArrowRightIcon
+                        style={{
+                            color: '#27AE60',
+                            marginRight: '5px',
+                        }}
+                    />
+                    Housing expenses:
+                </p>
                 <p className={styles.output}>
                     {numeral(totalHomeExpenses).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
-                <p className={styles.title}>Everyday Expenses:</p>
+                <p className={styles.title}>
+                    <KeyboardArrowRightIcon
+                        style={{
+                            color: '#CB4335',
+                            marginRight: '5px',
+                        }}
+                    />
+                    Everyday Expenses:
+                </p>
                 <p className={styles.output}>
                     {numeral(totalEverydayExpenses).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
-                <p className={styles.title}>regular Expenses:</p>
+                <p className={styles.title}>
+                    <KeyboardArrowRightIcon
+                        style={{
+                            color: '#8E44AD',
+                            marginRight: '5px',
+                        }}
+                    />
+                    regular Expenses:
+                </p>
                 <p className={styles.output}>
                     {numeral(regularExpensesTotal).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
-                <p className={styles.title}>Personal Expenses:</p>
+                <p className={styles.title}>
+                    {' '}
+                    <KeyboardArrowRightIcon
+                        style={{
+                            color: '#ff4da6',
+                            marginRight: '5px',
+                        }}
+                    />
+                    Personal Expenses:
+                </p>
                 <p className={styles.output}>
                     {numeral(personalExpensesTotal).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
-                <p className={styles.title}>Total Savings:</p>
+                <p className={styles.title}>
+                    {' '}
+                    <KeyboardArrowRightIcon
+                        style={{
+                            color: '#ff6600',
+                            marginRight: '5px',
+                        }}
+                    />
+                    Total Savings:
+                </p>
                 <p className={styles.output}>
                     {numeral(savingsExpensesTotal).format('$0,0')}
                 </p>

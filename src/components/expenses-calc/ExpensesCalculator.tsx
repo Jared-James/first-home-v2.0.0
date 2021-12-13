@@ -26,9 +26,7 @@ const ExpensesCalculator = () => {
                         <InputComponent />
                     </div>
                     <div className={styles.calculator__output}>
-                        <div className={styles.calculator__output_top}>
-                            <OutputComponent />
-                        </div>
+                        <OutputComponent />
                     </div>
                 </div>
             </div>

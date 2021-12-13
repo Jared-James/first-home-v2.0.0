@@ -1,4 +1,5 @@
 import { useState, ReactNode, useEffect } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import Box from '@mui/material/Box'
 import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
@@ -7,14 +8,20 @@ import Button from '@mui/material/Button'
 import { useAppDispatch } from '../../../redux/hooks'
 import { getStepperCount } from '../../../redux/features/expenses-calc'
 
-const steps = [
-    'Income',
-    'Housing Expenses',
-    'Everday Expenses',
-    'Regular Expenses',
-    'Personal Expenses',
-    'Savings',
-]
+function getSteps() {
+    return ['Income', 'Housing ', 'Everday ', 'Regular ', 'Personal', 'Savings']
+}
+
+function getStepsDesktop() {
+    return [
+        'Income',
+        'Housing Expenses',
+        'Everday Expenses',
+        'Regular Expenses',
+        'Personal Expenses',
+        'Savings',
+    ]
+}
 
 const StepperComponent = () => {
     const dispatch = useAppDispatch()
@@ -32,10 +39,23 @@ const StepperComponent = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1)
     }
 
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1400px)',
+    })
+
+    let steps
+
+    if (!isDesktopOrLaptop) {
+        steps = getSteps()
+    }
+    if (isDesktopOrLaptop) {
+        steps = getStepsDesktop()
+    }
+
     return (
-        <Box sx={{ width: '100%' }}>
-            <Stepper activeStep={activeStep}>
-                {steps.map((label, index) => {
+        <Box sx={{ width: '100%', marginBottom: '50px' }}>
+            <Stepper activeStep={activeStep} alternativeLabel>
+                {steps?.map((label, index) => {
                     const stepProps: { completed?: boolean } = {}
                     const labelProps: {
                         optional?: ReactNode
