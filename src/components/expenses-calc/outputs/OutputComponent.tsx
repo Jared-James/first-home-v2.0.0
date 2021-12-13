@@ -7,12 +7,39 @@ const OutputComponent = () => {
     const {
         income,
         otherIncome,
+
         rent,
         powerWater,
         homeContents,
         tvInternet,
         phone,
         miscellaneous,
+
+        groceries,
+        fuel,
+        publicTransport,
+        eatingOut,
+        takeaways,
+        EverdayMiscellaneous,
+
+        subscriptionFees,
+        memberships,
+        personalInsurance,
+        personalDebt,
+        regularMiscellaneous,
+
+        entertainment,
+        hairBeauty,
+        beverages,
+        clothing,
+        healthCare,
+        personalMiscellaneous,
+
+        emergencyFund,
+        investments,
+        kiwisaver,
+        savings,
+        savingsMiscellaneous,
     } = useAppSelector(getIncome)
 
     const timeFrame = useAppSelector(getTimeframe)
@@ -25,17 +52,14 @@ const OutputComponent = () => {
     }
 
     /* --- INCOME --- */
-    // calculated by the timeframe
     const incometotal = formattedTotal(timeFrame.income, income)
     const otherIncometotal = formattedTotal(timeFrame.otherIncome, otherIncome)
 
-    // calculates all the income expenses
     const totalIncome = (
         Number(incometotal) + Number(otherIncometotal)
     ).toFixed(0)
 
     /* --- HOUSING --- */
-    // calculated by the time frame
     const rentTotal = formattedTotal(timeFrame.rent, rent)
     const powerWaterTotal = formattedTotal(timeFrame.powerWater, powerWater)
     const homeContentsTotal = formattedTotal(
@@ -49,7 +73,6 @@ const OutputComponent = () => {
         miscellaneous
     )
 
-    // calculates all the housing expenses
     const totalHomeExpenses = (
         Number(rentTotal) +
         Number(powerWaterTotal) +
@@ -60,18 +83,98 @@ const OutputComponent = () => {
     ).toFixed(0)
 
     /* --- EVERDAY --- */
-    // everyday expenses
+    const groceriesTotal = formattedTotal(timeFrame.groceries, groceries)
+    const fuelTotal = formattedTotal(timeFrame.fuel, fuel)
+    const publicTransportTotal = formattedTotal(
+        timeFrame.publicTransport,
+        publicTransport
+    )
+    const eatingOutTotal = formattedTotal(timeFrame.eatingOut, eatingOut)
+    const takeawaysTotal = formattedTotal(timeFrame.takeaways, takeaways)
+    const EverdayMiscellaneousTotal = formattedTotal(
+        timeFrame.EverdayMiscellaneous,
+        EverdayMiscellaneous
+    )
+
+    const totalEverydayExpenses = (
+        Number(groceriesTotal) +
+        Number(fuelTotal) +
+        Number(publicTransportTotal) +
+        Number(eatingOutTotal) +
+        Number(takeawaysTotal) +
+        Number(EverdayMiscellaneousTotal)
+    ).toFixed(0)
 
     /* --- REGULAR --- */
-    // regular expenses
+    const subscriptionFeeTotal = formattedTotal(
+        timeFrame.subscriptionFees,
+        subscriptionFees
+    )
+    const membershipsTotal = formattedTotal(timeFrame.memberships, memberships)
+    const personalInsuranceTotal = formattedTotal(
+        timeFrame.personalInsurance,
+        personalInsurance
+    )
+    const personalDebtTotal = formattedTotal(
+        timeFrame.personalDebt,
+        personalDebt
+    )
+    const regularMiscellaneousTotal = formattedTotal(
+        timeFrame.regularMiscellaneous,
+        regularMiscellaneous
+    )
+
+    const regularExpensesTotal = (
+        Number(subscriptionFeeTotal) +
+        Number(membershipsTotal) +
+        Number(personalInsuranceTotal) +
+        Number(personalDebtTotal) +
+        Number(regularMiscellaneousTotal)
+    ).toFixed(0)
 
     /* --- PERSONAL --- */
-    // personal expenses
+    const entertainmentTotal = formattedTotal(
+        timeFrame.entertainment,
+        entertainment
+    )
+    const hairBeautyTotal = formattedTotal(timeFrame.hairBeauty, hairBeauty)
+    const beveragesTotal = formattedTotal(timeFrame.beverages, beverages)
+    const clothingTotal = formattedTotal(timeFrame.clothing, clothing)
+    const healthCareTotal = formattedTotal(timeFrame.healthCare, healthCare)
+    const personalMiscellaneousTotal = formattedTotal(
+        timeFrame.personalMiscellaneous,
+        personalMiscellaneous
+    )
 
-    /* --- SAVINGS --- */
-    // savings expenses
+    const personalExpensesTotal = (
+        Number(entertainmentTotal) +
+        Number(hairBeautyTotal) +
+        Number(beveragesTotal) +
+        Number(clothingTotal) +
+        Number(healthCareTotal) +
+        Number(personalMiscellaneousTotal)
+    ).toFixed(0)
 
-    console.log('total income formatted', incometotal)
+    // /* --- SAVINGS --- */
+    const emergencyFundTotal = formattedTotal(
+        timeFrame.emergencyFund,
+        emergencyFund
+    )
+    const investmentsTotal = formattedTotal(timeFrame.investments, investments)
+    const kiwisaverTotal = formattedTotal(timeFrame.kiwisaver, kiwisaver)
+    const savingsTotal = formattedTotal(timeFrame.savings, savings)
+    const savingsMiscellaneousTotal = formattedTotal(
+        timeFrame.savingsMiscellaneous,
+        savingsMiscellaneous
+    )
+
+    const savingsExpensesTotal = (
+        Number(emergencyFundTotal) +
+        Number(investmentsTotal) +
+        Number(kiwisaverTotal) +
+        Number(savingsTotal) +
+        Number(savingsMiscellaneousTotal)
+    ).toFixed(0)
 
     return (
         <div>
@@ -83,6 +186,22 @@ const OutputComponent = () => {
             <p>
                 Housing expenses
                 {numeral(totalHomeExpenses).format('$0,0')}
+            </p>
+            <p>
+                Everyday Expenses
+                {numeral(totalEverydayExpenses).format('$0,0')}
+            </p>
+            <p>
+                regular Expenses
+                {numeral(regularExpensesTotal).format('$0,0')}
+            </p>
+            <p>
+                Personal Expenses
+                {numeral(personalExpensesTotal).format('$0,0')}
+            </p>
+            <p>
+                Savings Expenses
+                {numeral(savingsExpensesTotal).format('$0,0')}
             </p>
         </div>
     )
