@@ -54,7 +54,11 @@ const StepperComponent = () => {
 
     return (
         <Box sx={{ width: '100%', marginBottom: '50px' }}>
-            <Stepper activeStep={activeStep} alternativeLabel>
+            <Stepper
+                activeStep={activeStep}
+                alternativeLabel
+                style={{ padding: '0' }}
+            >
                 {steps?.map((label, index) => {
                     const stepProps: { completed?: boolean } = {}
                     const labelProps: {
@@ -62,8 +66,14 @@ const StepperComponent = () => {
                     } = {}
 
                     return (
-                        <Step key={label} {...stepProps}>
-                            <StepLabel {...labelProps}>{label}</StepLabel>
+                        <Step
+                            key={label}
+                            {...stepProps}
+                            style={{ width: '200px', padding: '0' }}
+                        >
+                            <StepLabel {...labelProps}>
+                                <p style={{ fontSize: '12px' }}>{label}</p>
+                            </StepLabel>
                         </Step>
                     )
                 })}
