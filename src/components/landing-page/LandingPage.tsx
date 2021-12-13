@@ -12,49 +12,35 @@ const LandingPage = () => {
             <div className={styles.container__steps}>
                 <div className={styles.container__steps_item}>
                     <div className={styles.title}>
-                        <h2 className={styles.title__text}>
-                            Step one - Mortgage
-                        </h2>
+                        <h2 className={styles.title__text}>Step one</h2>
                     </div>
                     <div className={styles.body}>
                         <p className={styles.body__text}>
                             Using the first mortgage calculator, we will find
                             out what your mortgage repayments will be
                         </p>
-                        <Button
-                            variant="outlined"
-                            type="submit"
-                            style={{ marginLeft: '10px' }}
-                        >
+                        <Button variant="outlined" type="submit">
                             Continue
                         </Button>
                     </div>
                 </div>
                 <div className={styles.container__steps_item}>
                     <div className={styles.title}>
-                        <h2 className={styles.title__text}>
-                            Step Two - Savings
-                        </h2>
+                        <h2 className={styles.title__text}>Step Two</h2>
                     </div>
                     <div className={styles.body}>
                         <p className={styles.body__text}>
                             We then look your spending habits and find out where
                             your money is going
                         </p>
-                        <Button
-                            variant="outlined"
-                            type="submit"
-                            style={{ marginLeft: '10px' }}
-                        >
+                        <Button variant="outlined" type="submit">
                             Continue
                         </Button>
                     </div>
                 </div>
                 <div className={styles.container__steps_item}>
                     <div className={styles.title}>
-                        <h2 className={styles.title__text}>
-                            Step Three - Results
-                        </h2>
+                        <h2 className={styles.title__text}>Step Three</h2>
                     </div>
                     <div className={styles.body}>
                         <p className={styles.body__text}>
@@ -62,11 +48,7 @@ const LandingPage = () => {
                             out how long it will be before you reach your
                             deposit
                         </p>
-                        <Button
-                            variant="outlined"
-                            type="submit"
-                            style={{ marginLeft: '10px' }}
-                        >
+                        <Button variant="outlined" type="submit">
                             Continue
                         </Button>
                     </div>
