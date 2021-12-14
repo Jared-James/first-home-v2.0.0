@@ -19,7 +19,8 @@ import {
 } from '../../constants/time'
 
 const DepositCalculator = () => {
-    const { totalIncome, totalExpenses } = useAppSelector(getExpensesTotals)
+    const { totalIncome, totalExpenses, timeFrame } =
+        useAppSelector(getExpensesTotals)
     const { deposit } = useAppSelector(selectAll)
     const [percentageValue, setPercentageValue] = useState(35)
     const [time, setTime] = useState(MONTHLY)
@@ -108,7 +109,7 @@ const DepositCalculator = () => {
                         {numeral(totalIncome - totalExpenses).format('$0,0')} I
                         will save{' '}
                         {numeral(calculateSavingPercentage()).format('$0,0')}{' '}
-                        per month
+                        {timeFrame}
                     </p>
                 </div>
             </div>

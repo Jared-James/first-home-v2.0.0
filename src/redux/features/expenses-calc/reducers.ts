@@ -204,11 +204,13 @@ export const timeframeReducer = createReducer(
 type initialStateTotals = {
     totalIncome: number
     totalExpenses: number
+    timeFrame: string
 }
 
 const initialStateExpensesTotals: initialStateTotals = {
     totalIncome: 0,
     totalExpenses: 0,
+    timeFrame: '',
 }
 
 export const totalExpenseReducer = createReducer(

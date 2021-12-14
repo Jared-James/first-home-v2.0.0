@@ -19,6 +19,7 @@ const OutputComponent = () => {
     const [expenseCalculateTotals, setExpenseCalculateTotals] = useState({
         totalIncome: 0,
         totalExpenses: 0,
+        timeFrame: MONTHLY,
     })
     const [selectTimeFrame, setSelectTimeFrame] = useState(MONTHLY)
 
@@ -258,8 +259,14 @@ const OutputComponent = () => {
         setExpenseCalculateTotals({
             totalIncome: Number(totalIncomeWithTimeFrames),
             totalExpenses: Number(totalExpenseWithTimeFrame),
+            timeFrame: String(selectTimeFrame),
         })
-    }, [dispatch, totalExpenseWithTimeFrame, totalIncomeWithTimeFrames])
+    }, [
+        dispatch,
+        selectTimeFrame,
+        totalExpenseWithTimeFrame,
+        totalIncomeWithTimeFrames,
+    ])
 
     useEffect(() => {
         dispatch(calculateExpensesTotals(expenseCalculateTotals))
