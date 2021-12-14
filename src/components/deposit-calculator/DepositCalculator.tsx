@@ -74,12 +74,12 @@ const DepositCalculator = () => {
                         {numeral(totalExpenses).format('$0,0')}
                     </div>
                     <div className={styles.output__item}>
-                        <p>Total amount left after expenses</p>
+                        <p>After expenses</p>
                         {numeral(totalIncome - totalExpenses).format('$0,0')}
                     </div>
                 </div>
 
-                <div className={styles.centerMe}>
+                <div className={styles.savingsPerMonth}>
                     <p>
                         If i save{' '}
                         <Input
@@ -104,7 +104,7 @@ const DepositCalculator = () => {
                 </div>
             </div>
             <div className={styles.timeTakenContainer}>
-                <h3>Total time taken</h3>
+                <h3>Total time taken:</h3>
                 <div>
                     <h2>
                         {getFormatedStringFromDays(
