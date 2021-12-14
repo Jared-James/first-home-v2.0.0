@@ -1,6 +1,6 @@
 @use 'styles/utilities/font';
 
-.container {
+.landingPage__container {
     min-height: 93vh;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     }
 }
 
-.container__image {
+.landingPage__image {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,7 @@
     }
 }
 
-.container__image_picture {
+.landingPage__image_item {
     display: flex;
     flex-direction: row;
     padding: 5px;
@@ -34,7 +34,7 @@
     }
 }
 
-.container__steps {
+.landingPage__steps {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -47,7 +47,7 @@
     }
 }
 
-.container__steps_item {
+.landingPage__steps_item {
     height: 25%;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
     padding: 25px 5px;
 }
 
-.title__text {
+.landingPage__title_text {
     font-size: font.$xl-size;
     padding: 10px 0px;
 
@@ -67,7 +67,7 @@
     }
 }
 
-.body__text {
+.landingPage__Body_text {
     font-size: font.$md-size;
     padding: 10px 0px;
     margin-bottom: 10px;
