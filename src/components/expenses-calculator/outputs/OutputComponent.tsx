@@ -13,13 +13,14 @@ import {
 } from '../../../redux/features/expenses-calc'
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks'
 import styles from './outputComponent.module.scss'
+import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../../constants/time'
 
 const OutputComponent = () => {
     const [expenseCalculateTotals, setExpenseCalculateTotals] = useState({
         totalIncome: 0,
         totalExpenses: 0,
     })
-    const [selectTimeFrame, setSelectTimeFrame] = useState('monthly')
+    const [selectTimeFrame, setSelectTimeFrame] = useState(MONTHLY)
 
     const {
         income,
@@ -63,10 +64,10 @@ const OutputComponent = () => {
     const dispatch = useAppDispatch()
 
     const formattedTotal = (time: any, value: number) => {
-        if (time === 'weekly') return Number(value * 4.345)
-        if (time === 'fortnightly') return Number(value * 2.173)
-        if (time === 'monthly') return Number(value)
-        if (time === 'annually') return Number(value / 12)
+        if (time === WEEKLY) return Number(value * 4.345)
+        if (time === FORTNIGHTLY) return Number(value * 2.173)
+        if (time === MONTHLY) return Number(value)
+        if (time === ANNUALLY) return Number(value / 12)
     }
 
     /* --- INCOME --- */
@@ -202,10 +203,10 @@ const OutputComponent = () => {
         Number(personalExpensesTotal)
 
     const calcTotalTimeFrame = (timeFrame, value) => {
-        if (timeFrame === 'weekly') return Number(value / 4.345)
-        if (timeFrame === 'fortnightly') return Number(value / 2.173)
-        if (timeFrame === 'monthly') return Number(value)
-        if (timeFrame === 'annually') return Number(value * 12)
+        if (timeFrame === WEEKLY) return Number(value / 4.345)
+        if (timeFrame === FORTNIGHTLY) return Number(value / 2.173)
+        if (timeFrame === MONTHLY) return Number(value)
+        if (timeFrame === ANNUALLY) return Number(value * 12)
         return value
     }
 
@@ -247,9 +248,9 @@ const OutputComponent = () => {
     ).toFixed(0)
 
     const handleChange = (target: string) => {
-        if (target === 'weekly') setSelectTimeFrame(target)
-        if (target === 'fortnightly') setSelectTimeFrame(target)
-        if (target === 'monthly') setSelectTimeFrame(target)
+        if (target === WEEKLY) setSelectTimeFrame(target)
+        if (target === FORTNIGHTLY) setSelectTimeFrame(target)
+        if (target === MONTHLY) setSelectTimeFrame(target)
         setSelectTimeFrame(target)
     }
 
@@ -460,10 +461,10 @@ const OutputComponent = () => {
                                 disableScrollLock: true,
                             }}
                         >
-                            <MenuItem value="weekly">weekly</MenuItem>
-                            <MenuItem value="fortnightly">fortnightly</MenuItem>
-                            <MenuItem value="monthly">monthly</MenuItem>
-                            <MenuItem value="annually">Annually</MenuItem>
+                            <MenuItem value={WEEKLY}>weekly</MenuItem>
+                            <MenuItem value={FORTNIGHTLY}>fortnightly</MenuItem>
+                            <MenuItem value={MONTHLY}>monthly</MenuItem>
+                            <MenuItem value={ANNUALLY}>Annually</MenuItem>
                         </Select>
                     </div>
                 </>

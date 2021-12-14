@@ -7,6 +7,7 @@ import {
     getTimeframe,
     calculateTimeframe,
 } from '../../../../redux/features/expenses-calc'
+import { MONTHLY } from '../../../../constants/time'
 
 const Personal = () => {
     const {
@@ -29,12 +30,12 @@ const Personal = () => {
         personalMiscellaneous: personalMiscellaneous || 0,
     })
     const [timeFrame, setTimeFrame] = useState({
-        entertainment: alltimeFrames.entertainment || 'monthly',
-        hairBeauty: alltimeFrames.hairBeauty || 'monthly',
-        beverages: alltimeFrames.beverages || 'monthly',
-        healthCare: alltimeFrames.healthCare || 'monthly',
-        clothing: alltimeFrames.clothing || 'monthly',
-        personalMiscellaneous: alltimeFrames.personalMiscellaneous || 'monthly',
+        entertainment: alltimeFrames.entertainment || MONTHLY,
+        hairBeauty: alltimeFrames.hairBeauty || MONTHLY,
+        beverages: alltimeFrames.beverages || MONTHLY,
+        healthCare: alltimeFrames.healthCare || MONTHLY,
+        clothing: alltimeFrames.clothing || MONTHLY,
+        personalMiscellaneous: alltimeFrames.personalMiscellaneous || MONTHLY,
     })
 
     useEffect(() => {

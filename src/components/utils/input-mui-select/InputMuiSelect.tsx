@@ -4,6 +4,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import styles from './inputMuiSelect.module.scss'
+import { WEEKLY, FORTNIGHTLY, MONTHLY } from '../../../constants/time'
 
 interface MuiInput {
     onChange: any
@@ -81,9 +82,9 @@ const InputMuiSelect = ({
                     disableScrollLock: true,
                 }}
             >
-                <MenuItem value="weekly">weekly</MenuItem>
-                <MenuItem value="fortnightly">fortnightly</MenuItem>
-                <MenuItem value="monthly">monthly</MenuItem>
+                <MenuItem value={WEEKLY}>weekly</MenuItem>
+                <MenuItem value={FORTNIGHTLY}>fortnightly</MenuItem>
+                <MenuItem value={MONTHLY}>monthly</MenuItem>
             </Select>
 
             <span className={styles.tooltip}>

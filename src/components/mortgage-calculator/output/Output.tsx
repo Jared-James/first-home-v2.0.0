@@ -5,11 +5,12 @@ import MenuItem from '@mui/material/MenuItem'
 import { selectAll } from '../../../redux/features/mortgageCalculator'
 import { useAppSelector } from '../../../redux/hooks'
 import styles from './output.module.scss'
+import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../../constants/time'
 
 const Estimated = () => {
     const { housePrice, deposit, interest, lengthOfLoan } =
         useAppSelector(selectAll)
-    const [timeFrame, setTimeFrame] = useState<string>('monthly')
+    const [timeFrame, setTimeFrame] = useState<string>(MONTHLY)
     const [repayments, setRepayments] = useState<number>(0)
     const [totalInterestPayable, setTotalInterestPayable] = useState<number>(0)
     const [totalAmountPayable, setTotalAmountPayable] = useState<number>(0)
@@ -37,15 +38,15 @@ const Estimated = () => {
     ])
 
     const calculatePayments = (time: string) => {
-        if (time === 'monthly') {
+        if (time === MONTHLY) {
             setRepayments((monthlyPayment * 12) / 12)
             setTimeFrame(time)
         }
-        if (time === 'fortnightly') {
+        if (time === FORTNIGHTLY) {
             setRepayments((monthlyPayment * 12) / 26.071)
             setTimeFrame(time)
         }
-        if (time === 'weekly') {
+        if (time === WEEKLY) {
             setRepayments((monthlyPayment * 12) / 52.143)
             setTimeFrame(time)
         }
@@ -72,9 +73,9 @@ const Estimated = () => {
                             disableScrollLock: true,
                         }}
                     >
-                        <MenuItem value="weekly">weekly</MenuItem>
-                        <MenuItem value="fortnightly">fortnightly</MenuItem>
-                        <MenuItem value="monthly">monthly</MenuItem>
+                        <MenuItem value={WEEKLY}>weekly</MenuItem>
+                        <MenuItem value={FORTNIGHTLY}>fortnightly</MenuItem>
+                        <MenuItem value={MONTHLY}>monthly</MenuItem>
                     </Select>
                     payment:
                     <div className={styles.repayments__item}>

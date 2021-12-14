@@ -7,6 +7,7 @@ import {
     getTimeframe,
     calculateTimeframe,
 } from '../../../../redux/features/expenses-calc'
+import { MONTHLY } from '../../../../constants/time'
 
 const Savings = () => {
     const {
@@ -27,12 +28,12 @@ const Savings = () => {
         savingsMiscellaneous: savingsMiscellaneous || 0,
     })
     const [timeFrame, setTimeFrame] = useState({
-        emergencyFund: alltimeFrames.emergencyFund || 'monthly',
-        investments: alltimeFrames.investments || 'monthly',
-        kiwisaver: alltimeFrames.kiwisaver || 'monthly',
-        savings: alltimeFrames.savings || 'monthly',
-        savingsMiscellaneous: alltimeFrames.savingsMiscellaneous || 'monthly',
-        miscellaneous: alltimeFrames.miscellaneous || 'monthly',
+        emergencyFund: alltimeFrames.emergencyFund || MONTHLY,
+        investments: alltimeFrames.investments || MONTHLY,
+        kiwisaver: alltimeFrames.kiwisaver || MONTHLY,
+        savings: alltimeFrames.savings || MONTHLY,
+        savingsMiscellaneous: alltimeFrames.savingsMiscellaneous || MONTHLY,
+        miscellaneous: alltimeFrames.miscellaneous || MONTHLY,
     })
 
     useEffect(() => {

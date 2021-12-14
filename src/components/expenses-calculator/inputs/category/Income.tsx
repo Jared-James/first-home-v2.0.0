@@ -7,6 +7,7 @@ import {
     calculateTimeframe,
     getTimeframe,
 } from '../../../../redux/features/expenses-calc'
+import { MONTHLY } from '../../../../constants/time'
 
 const Income = () => {
     const { income, otherIncome } = useAppSelector(getIncome)
@@ -18,8 +19,8 @@ const Income = () => {
         otherIncome: otherIncome || 0,
     })
     const [timeFrame, setTimeFrame] = useState({
-        income: alltimeFrames.income || 'monthly',
-        otherIncome: alltimeFrames.otherIncome || 'monthly',
+        income: alltimeFrames.income || MONTHLY,
+        otherIncome: alltimeFrames.otherIncome || MONTHLY,
     })
 
     useEffect(() => {

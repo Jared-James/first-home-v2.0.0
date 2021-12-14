@@ -5,13 +5,14 @@ import styles from './depositCalculator.module.scss'
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
 import { getExpensesTotals } from '../../redux/features/expenses-calc'
 import { selectAll } from '../../redux/features/mortgageCalculator'
+import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../constants/time'
 
 const DepositCalculator = () => {
     const { totalIncome, totalExpenses } = useAppSelector(getExpensesTotals)
     const { deposit } = useAppSelector(selectAll)
     const [percentageValue, setPercentageValue] = useState(35)
 
-    let time = 'monthly'
+    let time = MONTHLY
 
     const calcPercentageOfLeftOver = () => {
         const result = totalIncome - totalExpenses
@@ -23,10 +24,10 @@ const DepositCalculator = () => {
         const percentage = percentageValue * 0.01 * result
         let convertToDay
 
-        if (time === 'weekly') convertToDay = Math.floor(percentage / 7)
-        if (time === 'monthly') convertToDay = Math.floor(percentage / 30.4167)
-        if (time === 'fortnightly') convertToDay = Math.floor(percentage / 14)
-        if (time === 'annually') convertToDay = Math.floor(percentage / 365)
+        if (time === WEEKLY) convertToDay = Math.floor(percentage / 7)
+        if (time === FORTNIGHTLY) convertToDay = Math.floor(percentage / 14)
+        if (time === MONTHLY) convertToDay = Math.floor(percentage / 30.4167)
+        if (time === ANNUALLY) convertToDay = Math.floor(percentage / 365)
 
         return initialDeposit / convertToDay
     }
