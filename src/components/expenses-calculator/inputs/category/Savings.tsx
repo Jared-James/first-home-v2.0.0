@@ -9,6 +9,23 @@ import {
 } from '../../../../redux/features/expenses-calc'
 import { MONTHLY } from '../../../../constants/time'
 
+type Inputs = {
+    emergencyFund: number
+    investments: number
+    kiwisaver: number
+    savings: number
+    savingsMiscellaneous: number
+}
+
+type TimeFrames = {
+    emergencyFund: string
+    investments: string
+    kiwisaver: string
+    savings: string
+    savingsMiscellaneous: string
+    miscellaneous: string
+}
+
 const Savings = () => {
     const {
         emergencyFund,
@@ -20,14 +37,14 @@ const Savings = () => {
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState<Inputs>({
         emergencyFund: emergencyFund || 0,
         investments: investments || 0,
         kiwisaver: kiwisaver || 0,
         savings: savings || 0,
         savingsMiscellaneous: savingsMiscellaneous || 0,
     })
-    const [timeFrame, setTimeFrame] = useState({
+    const [timeFrame, setTimeFrame] = useState<TimeFrames>({
         emergencyFund: alltimeFrames.emergencyFund || MONTHLY,
         investments: alltimeFrames.investments || MONTHLY,
         kiwisaver: alltimeFrames.kiwisaver || MONTHLY,
@@ -61,7 +78,6 @@ const Savings = () => {
             <InputMuiSelect
                 name="emergencyFund"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Emergency Fund"
                 value={emergencyFund}
                 handleTimeFrame={handleTimeFrame}
@@ -70,7 +86,6 @@ const Savings = () => {
             <InputMuiSelect
                 name="investments"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Investments"
                 value={investments}
                 handleTimeFrame={handleTimeFrame}
@@ -79,7 +94,6 @@ const Savings = () => {
             <InputMuiSelect
                 name="kiwisaver"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Kiwisaver"
                 value={kiwisaver}
                 handleTimeFrame={handleTimeFrame}
@@ -88,7 +102,6 @@ const Savings = () => {
             <InputMuiSelect
                 name="savings"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Savings"
                 value={savings}
                 handleTimeFrame={handleTimeFrame}
@@ -97,7 +110,6 @@ const Savings = () => {
             <InputMuiSelect
                 name="savingsMiscellaneous"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Savings Miscellaneous"
                 value={savingsMiscellaneous}
                 handleTimeFrame={handleTimeFrame}
