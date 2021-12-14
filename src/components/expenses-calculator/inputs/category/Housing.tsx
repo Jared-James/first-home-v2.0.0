@@ -15,7 +15,25 @@ const Housing = () => {
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    type Inputs = {
+        rent: number
+        powerWater: number
+        homeContents: number
+        tvInternet: number
+        phone: number
+        miscellaneous: number
+    }
+
+    type TimeFrame = {
+        rent: string
+        powerWater: string
+        homeContents: string
+        tvInternet: string
+        phone: string
+        miscellaneous: string
+    }
+
+    const [inputs, setInputs] = useState<Inputs>({
         rent: rent || 0,
         powerWater: powerWater || 0,
         homeContents: homeContents || 0,
@@ -23,7 +41,8 @@ const Housing = () => {
         phone: phone || 0,
         miscellaneous: miscellaneous || 0,
     })
-    const [timeFrame, setTimeFrame] = useState({
+
+    const [timeFrame, setTimeFrame] = useState<TimeFrame>({
         rent: alltimeFrames.rent || MONTHLY,
         powerWater: alltimeFrames.powerWater || MONTHLY,
         homeContents: alltimeFrames.homeContents || MONTHLY,
@@ -57,7 +76,6 @@ const Housing = () => {
             <InputMuiSelect
                 name="rent"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Rent"
                 value={rent}
                 handleTimeFrame={handleTimeFrame}
@@ -66,7 +84,6 @@ const Housing = () => {
             <InputMuiSelect
                 name="powerWater"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Power | Water"
                 value={powerWater}
                 handleTimeFrame={handleTimeFrame}
@@ -75,7 +92,6 @@ const Housing = () => {
             <InputMuiSelect
                 name="homeContents"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Home | Content Insurance"
                 value={homeContents}
                 handleTimeFrame={handleTimeFrame}
@@ -84,7 +100,6 @@ const Housing = () => {
             <InputMuiSelect
                 name="tvInternet"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Tv | Internet"
                 value={tvInternet}
                 handleTimeFrame={handleTimeFrame}
@@ -93,7 +108,6 @@ const Housing = () => {
             <InputMuiSelect
                 name="phone"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Phone"
                 value={phone}
                 handleTimeFrame={handleTimeFrame}
@@ -102,7 +116,6 @@ const Housing = () => {
             <InputMuiSelect
                 name="miscellaneous"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Miscellaneous"
                 value={miscellaneous}
                 handleTimeFrame={handleTimeFrame}
