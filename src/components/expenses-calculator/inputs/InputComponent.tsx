@@ -26,12 +26,12 @@ const InputComponent = () => {
             case 5:
                 return <Savings />
             default:
-                return 'No inputs'
+                return 'Error loading Income and Expenses inputs ...'
         }
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.stepper__container}>
             {renderInputsByStepperCount(stepCount)}
         </div>
     )

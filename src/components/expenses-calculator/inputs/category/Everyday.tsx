@@ -21,7 +21,25 @@ const Everyday = () => {
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    type InputState = {
+        groceries: number
+        fuel: number
+        publicTransport: number
+        eatingOut: number
+        takeaways: number
+        EverdayMiscellaneous: number
+    }
+
+    type TimeFrameState = {
+        groceries: string
+        fuel: string
+        publicTransport: string
+        eatingOut: string
+        takeaways: string
+        EverdayMiscellaneous: string
+    }
+
+    const [inputs, setInputs] = useState<InputState>({
         groceries: groceries || 0,
         fuel: fuel || 0,
         publicTransport: publicTransport || 0,
@@ -29,7 +47,7 @@ const Everyday = () => {
         takeaways: takeaways || 0,
         EverdayMiscellaneous: EverdayMiscellaneous || 0,
     })
-    const [timeFrame, setTimeFrame] = useState({
+    const [timeFrame, setTimeFrame] = useState<TimeFrameState>({
         groceries: alltimeFrames.groceries || MONTHLY,
         fuel: alltimeFrames.fuel || MONTHLY,
         publicTransport: alltimeFrames.publicTransport || MONTHLY,
@@ -63,7 +81,6 @@ const Everyday = () => {
             <InputMuiSelect
                 name="groceries"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Groceries"
                 value={groceries}
                 handleTimeFrame={handleTimeFrame}
@@ -72,7 +89,6 @@ const Everyday = () => {
             <InputMuiSelect
                 name="fuel"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Fuel"
                 value={fuel}
                 handleTimeFrame={handleTimeFrame}
@@ -81,7 +97,6 @@ const Everyday = () => {
             <InputMuiSelect
                 name="publicTransport"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Public Transport"
                 value={publicTransport}
                 handleTimeFrame={handleTimeFrame}
@@ -90,7 +105,6 @@ const Everyday = () => {
             <InputMuiSelect
                 name="eatingOut"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Eating out"
                 value={eatingOut}
                 handleTimeFrame={handleTimeFrame}
@@ -99,7 +113,6 @@ const Everyday = () => {
             <InputMuiSelect
                 name="takeaways"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Takeaways"
                 value={takeaways}
                 handleTimeFrame={handleTimeFrame}
@@ -108,7 +121,6 @@ const Everyday = () => {
             <InputMuiSelect
                 name="EverdayMiscellaneous"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Miscellaneous"
                 value={EverdayMiscellaneous}
                 handleTimeFrame={handleTimeFrame}
