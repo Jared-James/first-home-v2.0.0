@@ -14,11 +14,21 @@ const Income = () => {
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    type Inputs = {
+        income: number
+        otherIncome: number
+    }
+
+    type TimeFrames = {
+        income: string
+        otherIncome: string
+    }
+
+    const [inputs, setInputs] = useState<Inputs>({
         income: income || 0,
         otherIncome: otherIncome || 0,
     })
-    const [timeFrame, setTimeFrame] = useState({
+    const [timeFrame, setTimeFrame] = useState<TimeFrames>({
         income: alltimeFrames.income || MONTHLY,
         otherIncome: alltimeFrames.otherIncome || MONTHLY,
     })
@@ -48,7 +58,6 @@ const Income = () => {
             <InputMuiSelect
                 name="income"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Income"
                 value={income}
                 handleTimeFrame={handleTimeFrame}
@@ -57,7 +66,6 @@ const Income = () => {
             <InputMuiSelect
                 name="otherIncome"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Other Income"
                 value={otherIncome}
                 handleTimeFrame={handleTimeFrame}
