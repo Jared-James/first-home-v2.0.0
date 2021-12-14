@@ -2,28 +2,40 @@ import React, { useState } from 'react'
 import numeral from 'numeral'
 import Input from '@material-ui/core/Input'
 import styles from './depositCalculator.module.scss'
-import { useAppSelector, useAppDispatch } from '../../redux/hooks'
+import { useAppSelector } from '../../redux/hooks'
 import { getExpensesTotals } from '../../redux/features/expenses-calc'
 import { selectAll } from '../../redux/features/mortgageCalculator'
-import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../constants/time'
+import {
+    WEEKLY,
+    FORTNIGHTLY,
+    MONTHLY,
+    ANNUALLY,
+    YEAR,
+    YEARS,
+    MONTH,
+    MONTHS,
+    DAY,
+    DAYS,
+} from '../../constants/time'
 
 const DepositCalculator = () => {
     const { totalIncome, totalExpenses } = useAppSelector(getExpensesTotals)
     const { deposit } = useAppSelector(selectAll)
     const [percentageValue, setPercentageValue] = useState(35)
+    const [time, setTime] = useState(MONTHLY)
 
-    let time = MONTHLY
-
-    const calcPercentageOfLeftOver = () => {
+    const calculateSavingPercentage = () => {
         const result = totalIncome - totalExpenses
         return percentageValue * 0.01 * result
     }
 
-    const calcTimeLeft = (initialDeposit, totalExpenses) => {
-        const result = totalIncome - totalExpenses
+    const calculateTimeUntillDeposit = (
+        initialDeposit: number,
+        expenses: number
+    ) => {
+        const result = totalIncome - expenses
         const percentage = percentageValue * 0.01 * result
-        let convertToDay
-
+        let convertToDay = 0
         if (time === WEEKLY) convertToDay = Math.floor(percentage / 7)
         if (time === FORTNIGHTLY) convertToDay = Math.floor(percentage / 14)
         if (time === MONTHLY) convertToDay = Math.floor(percentage / 30.4167)
@@ -32,7 +44,7 @@ const DepositCalculator = () => {
         return initialDeposit / convertToDay
     }
 
-    const getFormatedStringFromDays = (numberOfDays) => {
+    const getFormatedStringFromDays = (numberOfDays: number) => {
         let years = Math.floor(numberOfDays / 365)
         let months = Math.floor((numberOfDays % 365) / 30)
         let days = Math.floor((numberOfDays % 365) % 30)
@@ -41,9 +53,9 @@ const DepositCalculator = () => {
         if (Number.isNaN(months)) months = 0
         if (Number.isNaN(days)) days = 0
 
-        const year = years === 1 ? 'year,' : 'years,'
-        const month = months === 1 ? 'month,' : 'months,'
-        const day = days === 1 ? 'day' : 'days'
+        const year = years === 1 ? YEAR : YEARS
+        const month = months === 1 ? MONTH : MONTHS
+        const day = days === 1 ? DAY : DAYS
 
         return `${years || ''} ${years ? year : ''} ${months || ''} ${
             months ? month : ''
@@ -51,44 +63,40 @@ const DepositCalculator = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.deposit__container}>
             <div>
-                <h2 className={styles.title}>Deposit Timeline</h2>
+                <h2 className={styles.deposit__title}>Deposit Timeline</h2>
             </div>
-            <div className={styles.instructions}>
+            <div className={styles.deposit_instructions}>
                 <p>
                     Taking everything into account we are able to find out how
                     long it will be before you reach your deposit.
                 </p>
             </div>
-            <div className={styles.output}>
+            <div className={styles.deposit_output}>
                 <div>
-                    <div className={styles.output__item}>
+                    <div className={styles.deposit__output_item}>
                         <p>Deposit:</p> {numeral(deposit).format('$0,0')}
                     </div>
-                    <div className={styles.output__item}>
+                    <div className={styles.deposit__output_item}>
                         <p>Total Income</p>
                         {numeral(totalIncome).format('$0,0')}
                     </div>
-                    <div className={styles.output__item}>
+                    <div className={styles.deposit__output_item}>
                         <p>Total expesens:</p>
                         {numeral(totalExpenses).format('$0,0')}
                     </div>
-                    <div className={styles.output__item}>
+                    <div className={styles.deposit__output_item}>
                         <p>After expenses</p>
                         {numeral(totalIncome - totalExpenses).format('$0,0')}
                     </div>
                 </div>
 
-                <div className={styles.savingsPerMonth}>
+                <div className={styles.deposit__savings}>
                     <p>
                         If i save{' '}
                         <Input
-                            style={{
-                                width: '45px',
-                                fontSize: '1.3rem',
-                                marginLeft: '0.3rem',
-                            }}
+                            className={styles.deposit__input}
                             defaultValue={percentageValue}
                             inputProps={{ inputMode: 'numeric' }}
                             onChange={(e) =>
@@ -99,17 +107,17 @@ const DepositCalculator = () => {
                         % of{' '}
                         {numeral(totalIncome - totalExpenses).format('$0,0')} I
                         will save{' '}
-                        {numeral(calcPercentageOfLeftOver()).format('$0,0')} per
-                        month
+                        {numeral(calculateSavingPercentage()).format('$0,0')}{' '}
+                        per month
                     </p>
                 </div>
             </div>
-            <div className={styles.timeTakenContainer}>
+            <div className={styles.deposit__time_untill_deposit}>
                 <h3>Time untill deposit:</h3>
                 <div>
                     <h2>
                         {getFormatedStringFromDays(
-                            calcTimeLeft(deposit, totalExpenses)
+                            calculateTimeUntillDeposit(deposit, totalExpenses)
                         )}
                     </h2>
                 </div>

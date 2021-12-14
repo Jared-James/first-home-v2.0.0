@@ -1,6 +1,6 @@
 @use 'styles/utilities/font';
 
-.container {
+.deposit__container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
     min-height: 75vh;
 }
 
-.title {
+.deposit__title {
     font-size: font.$xl-size;
     margin-top: 45px;
     @media screen and (min-width: 1200px) {
@@ -49,7 +49,7 @@
     }
 }
 
-.instructions {
+.deposit_instructions {
     padding: 0px 25px 25px 25px;
     width: 100%;
     font-size: font.$md-size;
@@ -64,7 +64,7 @@
     }
 }
 
-.output {
+.deposit_output {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,7 +76,7 @@
     }
 }
 
-.output__item {
+.deposit__output_item {
     display: flex;
     justify-content: space-between;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -93,7 +93,7 @@
     }
 }
 
-.savingsPerMonth {
+.deposit__savings {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +106,13 @@
     }
 }
 
-.timeTakenContainer {
+.deposit__input {
+    width: 45px;
+    font-size: 1.3rem;
+    margin-left: 0.3rem;
+}
+
+.deposit__time_untill_deposit {
     h3 {
         text-align: center;
     }
