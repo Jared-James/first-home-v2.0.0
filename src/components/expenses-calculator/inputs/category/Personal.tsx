@@ -21,7 +21,25 @@ const Personal = () => {
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    type Inputs = {
+        entertainment: number
+        hairBeauty: number
+        beverages: number
+        healthCare: number
+        clothing: number
+        personalMiscellaneous: number
+    }
+
+    type TimeFrames = {
+        entertainment: string
+        hairBeauty: string
+        beverages: string
+        healthCare: string
+        clothing: string
+        personalMiscellaneous: string
+    }
+
+    const [inputs, setInputs] = useState<Inputs>({
         entertainment: entertainment || 0,
         hairBeauty: hairBeauty || 0,
         beverages: beverages || 0,
@@ -29,7 +47,7 @@ const Personal = () => {
         clothing: clothing || 0,
         personalMiscellaneous: personalMiscellaneous || 0,
     })
-    const [timeFrame, setTimeFrame] = useState({
+    const [timeFrame, setTimeFrame] = useState<TimeFrames>({
         entertainment: alltimeFrames.entertainment || MONTHLY,
         hairBeauty: alltimeFrames.hairBeauty || MONTHLY,
         beverages: alltimeFrames.beverages || MONTHLY,
@@ -63,7 +81,6 @@ const Personal = () => {
             <InputMuiSelect
                 name="entertainment"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Entertainment"
                 value={entertainment}
                 handleTimeFrame={handleTimeFrame}
@@ -72,7 +89,6 @@ const Personal = () => {
             <InputMuiSelect
                 name="hairBeauty"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Hair | Beauty"
                 value={hairBeauty}
                 handleTimeFrame={handleTimeFrame}
@@ -81,7 +97,6 @@ const Personal = () => {
             <InputMuiSelect
                 name="beverages"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Beverages"
                 value={beverages}
                 handleTimeFrame={handleTimeFrame}
@@ -90,7 +105,6 @@ const Personal = () => {
             <InputMuiSelect
                 name="clothing"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Clothing"
                 value={clothing}
                 handleTimeFrame={handleTimeFrame}
@@ -99,7 +113,6 @@ const Personal = () => {
             <InputMuiSelect
                 name="healthCare"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Healthcare"
                 value={healthCare}
                 handleTimeFrame={handleTimeFrame}
@@ -108,7 +121,6 @@ const Personal = () => {
             <InputMuiSelect
                 name="personalMiscellaneous"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="personalMiscellaneous"
                 value={personalMiscellaneous}
                 handleTimeFrame={handleTimeFrame}
