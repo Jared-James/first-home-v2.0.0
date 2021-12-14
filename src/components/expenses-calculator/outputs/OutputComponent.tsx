@@ -15,12 +15,19 @@ import { useAppSelector, useAppDispatch } from '../../../redux/hooks'
 import styles from './outputComponent.module.scss'
 import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../../constants/time'
 
+interface ExpenseCalculator {
+    totalIncome: number
+    totalExpenses: number
+    timeFrame: string
+}
+
 const OutputComponent = () => {
-    const [expenseCalculateTotals, setExpenseCalculateTotals] = useState({
-        totalIncome: 0,
-        totalExpenses: 0,
-        timeFrame: MONTHLY,
-    })
+    const [expenseCalculateTotals, setExpenseCalculateTotals] =
+        useState<ExpenseCalculator>({
+            totalIncome: 0,
+            totalExpenses: 0,
+            timeFrame: MONTHLY,
+        })
     const [selectTimeFrame, setSelectTimeFrame] = useState(MONTHLY)
 
     const {
@@ -79,7 +86,7 @@ const OutputComponent = () => {
         Number(incometotal) + Number(otherIncometotal)
     ).toFixed(0)
 
-    /* --- HOUSING --- */
+    /* --- HOUSING EXPENSES --- */
     const rentTotal = formattedTotal(timeFrame.rent, rent)
     const powerWaterTotal = formattedTotal(timeFrame.powerWater, powerWater)
     const homeContentsTotal = formattedTotal(
@@ -102,7 +109,7 @@ const OutputComponent = () => {
         Number(HomeMiscellaneousTotal)
     ).toFixed(0)
 
-    /* --- EVERDAY --- */
+    /* --- EVERDAY EXPENSES --- */
     const groceriesTotal = formattedTotal(timeFrame.groceries, groceries)
     const fuelTotal = formattedTotal(timeFrame.fuel, fuel)
     const publicTransportTotal = formattedTotal(
@@ -125,7 +132,7 @@ const OutputComponent = () => {
         Number(EverdayMiscellaneousTotal)
     ).toFixed(0)
 
-    /* --- REGULAR --- */
+    /* --- REGULAR EXPENSES --- */
     const subscriptionFeeTotal = formattedTotal(
         timeFrame.subscriptionFees,
         subscriptionFees
@@ -152,7 +159,7 @@ const OutputComponent = () => {
         Number(regularMiscellaneousTotal)
     ).toFixed(0)
 
-    /* --- PERSONAL --- */
+    /* --- PERSONAL EXPENSES --- */
     const entertainmentTotal = formattedTotal(
         timeFrame.entertainment,
         entertainment
@@ -175,7 +182,7 @@ const OutputComponent = () => {
         Number(personalMiscellaneousTotal)
     ).toFixed(0)
 
-    // /* --- SAVINGS --- */
+    // /* --- SAVINGS  --- */
     const emergencyFundTotal = formattedTotal(
         timeFrame.emergencyFund,
         emergencyFund
@@ -196,51 +203,51 @@ const OutputComponent = () => {
         Number(savingsMiscellaneousTotal)
     ).toFixed(0)
 
-    /* All expenses totalled up */
+    /* ALL EXPENSES TOTALLED UP  */
     const totalExpense =
         Number(totalHomeExpenses) +
         Number(totalEverydayExpenses) +
         Number(regularExpensesTotal) +
         Number(personalExpensesTotal)
 
-    const calcTotalTimeFrame = (timeFrame, value) => {
-        if (timeFrame === WEEKLY) return Number(value / 4.345)
-        if (timeFrame === FORTNIGHTLY) return Number(value / 2.173)
-        if (timeFrame === MONTHLY) return Number(value)
-        if (timeFrame === ANNUALLY) return Number(value * 12)
+    const calcTotalTimeFrame = (time: string, value: number) => {
+        if (time === WEEKLY) return Number(value / 4.345)
+        if (time === FORTNIGHTLY) return Number(value / 2.173)
+        if (time === MONTHLY) return Number(value)
+        if (time === ANNUALLY) return Number(value * 12)
         return value
     }
 
-    /* All totals account for SELECTED timeframe  */
+    /* All totals calculated for SELECTED timeframe [weekly, fornightly, monthly]  */
 
     const totalIncomeWithTimeFrames = calcTotalTimeFrame(
         selectTimeFrame,
-        totalIncome
+        Number(totalIncome)
     ).toFixed(0)
 
     const totalHomeExpensesWithTimeFrames = calcTotalTimeFrame(
         selectTimeFrame,
-        totalHomeExpenses
+        Number(totalHomeExpenses)
     ).toFixed(0)
 
     const totalEverydayExpensesWithTimeFrames = calcTotalTimeFrame(
         selectTimeFrame,
-        totalEverydayExpenses
+        Number(totalEverydayExpenses)
     ).toFixed(0)
 
     const regularExpensesTotalWithTimeFrames = calcTotalTimeFrame(
         selectTimeFrame,
-        regularExpensesTotal
+        Number(regularExpensesTotal)
     ).toFixed(0)
 
     const personalExpensesTotalWithTimeFrames = calcTotalTimeFrame(
         selectTimeFrame,
-        personalExpensesTotal
+        Number(personalExpensesTotal)
     ).toFixed(0)
 
     const savingsExpensesTotalWithTimeFrames = calcTotalTimeFrame(
         selectTimeFrame,
-        savingsExpensesTotal
+        Number(savingsExpensesTotal)
     ).toFixed(0)
 
     const totalExpenseWithTimeFrame = calcTotalTimeFrame(
@@ -271,6 +278,8 @@ const OutputComponent = () => {
     useEffect(() => {
         dispatch(calculateExpensesTotals(expenseCalculateTotals))
     }, [dispatch, expenseCalculateTotals, totalIncomeWithTimeFrames])
+
+    /* config for hightcharts */
 
     const config = {
         chart: {

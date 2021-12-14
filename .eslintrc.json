@@ -25,6 +25,7 @@
         "node/no-unsupported-features/es-syntax": "off",
         "object-shorthand": "off",
         "arrow-body-style": "off",
+        "consistent-return": "off",
         "@next/next/no-img-element": "off",
         "class-methods-use-this": "off",
         "react/function-component-definition": "off",
