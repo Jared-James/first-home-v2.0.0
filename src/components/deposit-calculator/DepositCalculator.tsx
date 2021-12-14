@@ -104,7 +104,7 @@ const DepositCalculator = () => {
                 </div>
             </div>
             <div className={styles.timeTakenContainer}>
-                <h3>Total time taken:</h3>
+                <h3>Time untill deposit:</h3>
                 <div>
                     <h2>
                         {getFormatedStringFromDays(
