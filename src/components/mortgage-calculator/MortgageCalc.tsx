@@ -4,11 +4,11 @@ import styles from './MortgageCalc.module.scss'
 
 const MortgageCalc = () => {
     return (
-        <div className={styles.container}>
+        <div className={styles.mortgage__container}>
             <div>
-                <h2 className={styles.title}>Mortgage Repayment</h2>
+                <h2 className={styles.mortgage__title}>Mortgage Repayment</h2>
             </div>
-            <div className={styles.instructions}>
+            <div className={styles.mortgage__instructions}>
                 <p>
                     {`Enter the purchase price, down payment, annual interest
                     rate, and loan term in the appropriate fields. You'll be
@@ -16,11 +16,11 @@ const MortgageCalc = () => {
                     overall amount due`}
                 </p>
             </div>
-            <div className={styles.calculator}>
-                <div className={styles.calculator__input}>
+            <div className={styles.mortgage__calculator}>
+                <div className={styles.mortgage__calculator_input}>
                     <MortgageInput />
                 </div>
-                <div className={styles.calculator__output}>
+                <div className={styles.mortgage__calculator_output}>
                     <Output />
                 </div>
             </div>

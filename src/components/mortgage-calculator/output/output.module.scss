@@ -1,10 +1,10 @@
-.container {
+.output__container {
     width: 100%;
     min-height: 100%;
     padding-bottom: 50px;
 }
 
-.container__circle {
+.output__container_inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,17 +12,17 @@
     height: 100%;
 }
 
-.repayments__item {
+.output__repayments {
     text-align: center;
     padding: 15px;
     font-size: 28px;
 }
 
-.totals {
+.output__totals {
     width: 100%;
 }
 
-.totals__item {
+.output__totals_item {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -32,4 +32,13 @@
     span {
         margin: 0px 10px;
     }
+}
+
+.output_select {
+    margin-left: 0.7rem;
+    margin-right: 0.5rem;
+    min-width: 125.06px;
+    font-size: 16px;
+    transform: translateY(0.1rem);
+    height: 25%;
 }

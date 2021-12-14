@@ -22,12 +22,12 @@ const DepositCalculator = () => {
     const { totalIncome, totalExpenses, timeFrame } =
         useAppSelector(getExpensesTotals)
     const { deposit } = useAppSelector(selectAll)
-    const [percentageValue, setPercentageValue] = useState(35)
-    const [time] = useState(MONTHLY)
+    const [percentageValue, setPercentageValue] = useState<number>(35)
+    const [time] = useState<string>(MONTHLY)
 
     const calculateSavingPercentage = () => {
         const result = totalIncome - totalExpenses
-        return percentageValue * 0.01 * result
+        return Number(percentageValue * 0.01 * result)
     }
 
     const calculateTimeUntillDeposit = (

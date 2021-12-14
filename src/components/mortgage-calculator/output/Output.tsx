@@ -5,11 +5,12 @@ import MenuItem from '@mui/material/MenuItem'
 import { selectAll } from '../../../redux/features/mortgageCalculator'
 import { useAppSelector } from '../../../redux/hooks'
 import styles from './output.module.scss'
-import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../../constants/time'
+import { WEEKLY, FORTNIGHTLY, MONTHLY } from '../../../constants/time'
 
 const Estimated = () => {
     const { housePrice, deposit, interest, lengthOfLoan } =
         useAppSelector(selectAll)
+
     const [timeFrame, setTimeFrame] = useState<string>(MONTHLY)
     const [repayments, setRepayments] = useState<number>(0)
     const [totalInterestPayable, setTotalInterestPayable] = useState<number>(0)
@@ -53,21 +54,14 @@ const Estimated = () => {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.container__circle}>
-                <div className={styles.repayments}>
+        <div className={styles.output__container}>
+            <div className={styles.output__container_inner}>
+                <div>
                     Estimated
                     <Select
+                        className={styles.output_select}
                         value={timeFrame}
                         onChange={(e: any) => calculatePayments(e.target.value)}
-                        style={{
-                            marginLeft: '0.7rem',
-                            marginRight: '0.5rem',
-                            minWidth: '125.06px',
-                            fontSize: '16px',
-                            transform: 'translateY(0.1rem)',
-                            height: '25%',
-                        }}
                         variant="standard"
                         MenuProps={{
                             disableScrollLock: true,
@@ -78,22 +72,22 @@ const Estimated = () => {
                         <MenuItem value={MONTHLY}>monthly</MenuItem>
                     </Select>
                     payment:
-                    <div className={styles.repayments__item}>
+                    <div className={styles.output__repayments}>
                         {numeral(repayments).format('$0,0')}
                     </div>
                 </div>
-                <div className={styles.totals}>
-                    <p className={styles.totals__item}>
+                <div className={styles.output__totals}>
+                    <p className={styles.output__totals_item}>
                         <span>Loan Amount:</span>
                         <span>{numeral(loanAmount).format('$0,0')}</span>
                     </p>
-                    <p className={styles.totals__item}>
+                    <p className={styles.output__totals_item}>
                         <span> Total interest payable:</span>
                         <span>
                             {numeral(totalInterestPayable).format('$0,0')}
                         </span>
                     </p>
-                    <p className={styles.totals__item}>
+                    <p className={styles.output__totals_item}>
                         <span> Total amount payable:</span>
                         <span>
                             {numeral(totalAmountPayable).format('$0,0')}

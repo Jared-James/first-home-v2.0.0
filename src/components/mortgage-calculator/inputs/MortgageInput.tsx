@@ -5,10 +5,17 @@ import style from './mortgageInput.module.scss'
 import { useAppDispatch } from '../../../redux/hooks'
 import { updateHousePrice } from '../../../redux/features/mortgageCalculator'
 
+interface Inputs {
+    housePrice: number
+    deposit: number
+    interest: number
+    lengthOfLoan: number
+}
+
 const MortgageInput = () => {
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState<Inputs>({
         housePrice: 0,
         deposit: 0,
         interest: 0,
@@ -22,19 +29,13 @@ const MortgageInput = () => {
         }))
 
     return (
-        <div className={style.container}>
+        <div className={style.inputs__container}>
             <InputMui
                 name="housePrice"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="House Price"
             />
-            <InputMui
-                name="deposit"
-                onChange={handleChange}
-                currencySymbol="$"
-                label="Deposit"
-            />
+            <InputMui name="deposit" onChange={handleChange} label="Deposit" />
             <InputMui
                 name="interest"
                 onChange={handleChange}
