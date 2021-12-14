@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 import numeral from 'numeral'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import {
     getIncome,
@@ -15,6 +17,7 @@ const OutputComponent = () => {
         totalIncome: 0,
         totalExpenses: 0,
     })
+    const [selectTimeFrame, setSelectTimeFrame] = useState('monthly')
 
     const {
         income,
@@ -189,22 +192,75 @@ const OutputComponent = () => {
         Number(savingsMiscellaneousTotal)
     ).toFixed(0)
 
+    /* All expenses totalled up */
     const totalExpense =
         Number(totalHomeExpenses) +
         Number(totalEverydayExpenses) +
         Number(regularExpensesTotal) +
         Number(personalExpensesTotal)
 
+    const calcTotalTimeFrame = (timeFrame, value) => {
+        if (timeFrame === 'weekly') return Number(value / 4.345)
+        if (timeFrame === 'fortnightly') return Number(value / 2.173)
+        if (timeFrame === 'monthly') return Number(value)
+        if (timeFrame === 'annually') return Number(value * 12)
+        return value
+    }
+
+    /* All totals account for SELECTED timeframe  */
+
+    const totalIncomeWithTimeFrames = calcTotalTimeFrame(
+        selectTimeFrame,
+        totalIncome
+    ).toFixed(0)
+
+    const totalHomeExpensesWithTimeFrames = calcTotalTimeFrame(
+        selectTimeFrame,
+        totalHomeExpenses
+    ).toFixed(0)
+
+    const totalEverydayExpensesWithTimeFrames = calcTotalTimeFrame(
+        selectTimeFrame,
+        totalEverydayExpenses
+    ).toFixed(0)
+
+    const regularExpensesTotalWithTimeFrames = calcTotalTimeFrame(
+        selectTimeFrame,
+        regularExpensesTotal
+    ).toFixed(0)
+
+    const personalExpensesTotalWithTimeFrames = calcTotalTimeFrame(
+        selectTimeFrame,
+        personalExpensesTotal
+    ).toFixed(0)
+
+    const savingsExpensesTotalWithTimeFrames = calcTotalTimeFrame(
+        selectTimeFrame,
+        savingsExpensesTotal
+    ).toFixed(0)
+
+    const totalExpenseWithTimeFrame = calcTotalTimeFrame(
+        selectTimeFrame,
+        totalExpense
+    ).toFixed(0)
+
+    const handleChange = (target: string) => {
+        if (target === 'weekly') setSelectTimeFrame(target)
+        if (target === 'fortnightly') setSelectTimeFrame(target)
+        if (target === 'monthly') setSelectTimeFrame(target)
+        setSelectTimeFrame(target)
+    }
+
     useEffect(() => {
         setExpenseCalculateTotals({
-            totalIncome: Number(totalIncome),
-            totalExpenses: Number(totalExpense),
+            totalIncome: Number(totalIncomeWithTimeFrames),
+            totalExpenses: Number(totalExpenseWithTimeFrame),
         })
-    }, [dispatch, totalExpense, totalIncome])
+    }, [dispatch, totalExpenseWithTimeFrame, totalIncomeWithTimeFrames])
 
     useEffect(() => {
         dispatch(calculateExpensesTotals(expenseCalculateTotals))
-    }, [dispatch, expenseCalculateTotals, totalIncome])
+    }, [dispatch, expenseCalculateTotals, totalIncomeWithTimeFrames])
 
     return (
         <div className={styles.container}>
@@ -220,7 +276,7 @@ const OutputComponent = () => {
                     Total Income:
                 </p>
                 <p className={styles.output}>
-                    {numeral(totalIncome).format('$0,0')}
+                    {numeral(totalIncomeWithTimeFrames).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
@@ -234,7 +290,7 @@ const OutputComponent = () => {
                     Housing Expenses:
                 </p>
                 <p className={styles.output}>
-                    {numeral(totalHomeExpenses).format('$0,0')}
+                    {numeral(totalHomeExpensesWithTimeFrames).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
@@ -248,7 +304,9 @@ const OutputComponent = () => {
                     Everyday Expenses:
                 </p>
                 <p className={styles.output}>
-                    {numeral(totalEverydayExpenses).format('$0,0')}
+                    {numeral(totalEverydayExpensesWithTimeFrames).format(
+                        '$0,0'
+                    )}
                 </p>
             </div>
             <div className={styles.container__output}>
@@ -262,7 +320,7 @@ const OutputComponent = () => {
                     Regular Expenses:
                 </p>
                 <p className={styles.output}>
-                    {numeral(regularExpensesTotal).format('$0,0')}
+                    {numeral(regularExpensesTotalWithTimeFrames).format('$0,0')}
                 </p>
             </div>
             <div className={styles.container__output}>
@@ -277,7 +335,9 @@ const OutputComponent = () => {
                     Personal Expenses:
                 </p>
                 <p className={styles.output}>
-                    {numeral(personalExpensesTotal).format('$0,0')}
+                    {numeral(personalExpensesTotalWithTimeFrames).format(
+                        '$0,0'
+                    )}
                 </p>
             </div>
             <div className={styles.container__output}>
@@ -292,8 +352,32 @@ const OutputComponent = () => {
                     Total Savings:
                 </p>
                 <p className={styles.output}>
-                    {numeral(savingsExpensesTotal).format('$0,0')}
+                    {numeral(savingsExpensesTotalWithTimeFrames).format('$0,0')}
                 </p>
+            </div>
+            <div>
+                <Select
+                    name="time"
+                    value={selectTimeFrame}
+                    onChange={(e: any) => handleChange(e.target.value)}
+                    style={{
+                        marginLeft: '0.7rem',
+                        marginRight: '0.5rem',
+                        minWidth: '125.06px',
+                        fontSize: '16px',
+                        transform: 'translateY(0.1rem)',
+                        height: '25%',
+                    }}
+                    variant="standard"
+                    MenuProps={{
+                        disableScrollLock: true,
+                    }}
+                >
+                    <MenuItem value="weekly">weekly</MenuItem>
+                    <MenuItem value="fortnightly">fortnightly</MenuItem>
+                    <MenuItem value="monthly">monthly</MenuItem>
+                    <MenuItem value="annually">Annually</MenuItem>
+                </Select>
             </div>
         </div>
     )
