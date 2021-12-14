@@ -9,29 +9,29 @@ import {
 } from '../../../../redux/features/expenses-calc'
 import { MONTHLY } from '../../../../constants/time'
 
+interface Inputs {
+    rent: number
+    powerWater: number
+    homeContents: number
+    tvInternet: number
+    phone: number
+    miscellaneous: number
+}
+
+interface TimeFrame {
+    rent: string
+    powerWater: string
+    homeContents: string
+    tvInternet: string
+    phone: string
+    miscellaneous: string
+}
+
 const Housing = () => {
     const { rent, powerWater, homeContents, tvInternet, phone, miscellaneous } =
         useAppSelector(getIncome)
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
-
-    type Inputs = {
-        rent: number
-        powerWater: number
-        homeContents: number
-        tvInternet: number
-        phone: number
-        miscellaneous: number
-    }
-
-    type TimeFrame = {
-        rent: string
-        powerWater: string
-        homeContents: string
-        tvInternet: string
-        phone: string
-        miscellaneous: string
-    }
 
     const [inputs, setInputs] = useState<Inputs>({
         rent: rent || 0,

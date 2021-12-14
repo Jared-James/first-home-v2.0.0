@@ -9,6 +9,22 @@ import {
 } from '../../../../redux/features/expenses-calc'
 import { MONTHLY } from '../../../../constants/time'
 
+interface Inputs {
+    subscriptionFees: number
+    memberships: number
+    personalInsurance: number
+    personalDebt: number
+    regularMiscellaneous: number
+}
+
+interface TimeFrames {
+    subscriptionFees: string
+    memberships: string
+    personalInsurance: string
+    personalDebt: string
+    regularMiscellaneous: string
+}
+
 const Regular = () => {
     const {
         subscriptionFees,
@@ -19,22 +35,6 @@ const Regular = () => {
     } = useAppSelector(getIncome)
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
-
-    type Inputs = {
-        subscriptionFees: number
-        memberships: number
-        personalInsurance: number
-        personalDebt: number
-        regularMiscellaneous: number
-    }
-
-    type TimeFrames = {
-        subscriptionFees: string
-        memberships: string
-        personalInsurance: string
-        personalDebt: string
-        regularMiscellaneous: string
-    }
 
     const [inputs, setInputs] = useState<Inputs>({
         subscriptionFees: subscriptionFees || 0,

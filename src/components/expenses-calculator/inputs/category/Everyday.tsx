@@ -9,6 +9,24 @@ import {
 } from '../../../../redux/features/expenses-calc'
 import { MONTHLY } from '../../../../constants/time'
 
+interface InputState {
+    groceries: number
+    fuel: number
+    publicTransport: number
+    eatingOut: number
+    takeaways: number
+    EverdayMiscellaneous: number
+}
+
+interface TimeFrameState {
+    groceries: string
+    fuel: string
+    publicTransport: string
+    eatingOut: string
+    takeaways: string
+    EverdayMiscellaneous: string
+}
+
 const Everyday = () => {
     const {
         groceries,
@@ -20,24 +38,6 @@ const Everyday = () => {
     } = useAppSelector(getIncome)
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
-
-    type InputState = {
-        groceries: number
-        fuel: number
-        publicTransport: number
-        eatingOut: number
-        takeaways: number
-        EverdayMiscellaneous: number
-    }
-
-    type TimeFrameState = {
-        groceries: string
-        fuel: string
-        publicTransport: string
-        eatingOut: string
-        takeaways: string
-        EverdayMiscellaneous: string
-    }
 
     const [inputs, setInputs] = useState<InputState>({
         groceries: groceries || 0,

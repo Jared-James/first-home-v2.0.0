@@ -9,7 +9,7 @@ import {
 } from '../../../../redux/features/expenses-calc'
 import { MONTHLY } from '../../../../constants/time'
 
-type Inputs = {
+interface Inputs {
     emergencyFund: number
     investments: number
     kiwisaver: number
@@ -17,7 +17,7 @@ type Inputs = {
     savingsMiscellaneous: number
 }
 
-type TimeFrames = {
+interface TimeFrames {
     emergencyFund: string
     investments: string
     kiwisaver: string

@@ -9,20 +9,20 @@ import {
 } from '../../../../redux/features/expenses-calc'
 import { MONTHLY } from '../../../../constants/time'
 
+interface Inputs {
+    income: number
+    otherIncome: number
+}
+
+interface TimeFrames {
+    income: string
+    otherIncome: string
+}
+
 const Income = () => {
     const { income, otherIncome } = useAppSelector(getIncome)
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
-
-    type Inputs = {
-        income: number
-        otherIncome: number
-    }
-
-    type TimeFrames = {
-        income: string
-        otherIncome: string
-    }
 
     const [inputs, setInputs] = useState<Inputs>({
         income: income || 0,
