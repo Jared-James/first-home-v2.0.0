@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 import numeral from 'numeral'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
-import CardContent from '@material-ui/core/CardContent'
-import { getIncome, getTimeframe } from '../../../redux/features/expenses-calc'
-import { useAppSelector } from '../../../redux/hooks'
+import {
+    getIncome,
+    getTimeframe,
+    calculateExpensesTotals,
+} from '../../../redux/features/expenses-calc'
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks'
 import styles from './outputComponent.module.scss'
 
 const OutputComponent = () => {
+    const [expenseCalculateTotals, setExpenseCalculateTotals] = useState({
+        totalIncome: 0,
+        totalExpenses: 0,
+    })
+
     const {
         income,
         otherIncome,
@@ -47,6 +55,7 @@ const OutputComponent = () => {
     } = useAppSelector(getIncome)
 
     const timeFrame = useAppSelector(getTimeframe)
+    const dispatch = useAppDispatch()
 
     const formattedTotal = (time: any, value: number) => {
         if (time === 'weekly') return Number(value * 4.345)
@@ -179,6 +188,23 @@ const OutputComponent = () => {
         Number(savingsTotal) +
         Number(savingsMiscellaneousTotal)
     ).toFixed(0)
+
+    const totalExpense =
+        Number(totalHomeExpenses) +
+        Number(totalEverydayExpenses) +
+        Number(regularExpensesTotal) +
+        Number(personalExpensesTotal)
+
+    useEffect(() => {
+        setExpenseCalculateTotals({
+            totalIncome: Number(totalIncome),
+            totalExpenses: Number(totalExpense),
+        })
+    }, [dispatch, totalExpense, totalIncome])
+
+    useEffect(() => {
+        dispatch(calculateExpensesTotals(expenseCalculateTotals))
+    }, [dispatch, expenseCalculateTotals, totalIncome])
 
     return (
         <div className={styles.container}>

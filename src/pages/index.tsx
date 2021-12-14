@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/Index.module.scss'
-import ExpensesCalculator from '../components/expenses-calc/ExpensesCalculator'
+import DepositCalculator from '../components/deposit-calculator/DepositCalculator'
+import ExpensesCalculator from '../components/expenses-calculator/ExpensesCalculator'
+import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
 import LandingPage from '../components/landing-page/LandingPage'
-import MortgageCalc from '../components/mortgage-calc/MortgageCalc'
+import MortgageCalc from '../components/mortgage-calculator/MortgageCalc'
 
 const Home: NextPage = () => (
     <div className={styles.container}>
@@ -16,7 +18,8 @@ const Home: NextPage = () => (
         <LandingPage />
         <MortgageCalc />
         <ExpensesCalculator />
-        <MortgageCalc />
+        <DepositCalculator />
+        <Footer />
     </div>
 )
 

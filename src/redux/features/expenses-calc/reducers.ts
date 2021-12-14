@@ -3,6 +3,7 @@ import {
     getStepperCount,
     calculateExpenses,
     calculateTimeframe,
+    calculateExpensesTotals,
 } from './actions'
 
 // stepper component state: keeps track of what position in the stepper the user is.
@@ -193,6 +194,27 @@ export const timeframeReducer = createReducer(
     initialStateTimeframe,
     (builder) => {
         builder.addCase(calculateTimeframe, (state, action) => {
+            return { ...state, ...action.payload }
+        })
+    }
+)
+
+// calculates the total income + total expeenses
+
+type initialStateTotals = {
+    totalIncome: number
+    totalExpenses: number
+}
+
+const initialStateExpensesTotals: initialStateTotals = {
+    totalIncome: 0,
+    totalExpenses: 0,
+}
+
+export const totalExpenseReducer = createReducer(
+    initialStateExpensesTotals,
+    (builder) => {
+        builder.addCase(calculateExpensesTotals, (state, action) => {
             console.log('payload redux', action)
             return { ...state, ...action.payload }
         })

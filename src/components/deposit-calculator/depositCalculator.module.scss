@@ -1,0 +1,99 @@
+@use 'styles/utilities/font';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 5%;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100px;
+}
+
+.title {
+    font-size: font.$xl-size;
+    margin-top: 45px;
+    @media screen and (min-width: 1200px) {
+        font-size: font.$xxl-size;
+        margin-top: 90px;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    &::after {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 1.3px;
+        animation: gradient 7s ease-in infinite;
+        background: linear-gradient(-45deg, #002884, #e73c7e, #23a6d5, #757ce8);
+        background-size: 400% 400%;
+        transform: translateY(-3rem);
+
+        @media screen and (min-width: 1200px) {
+            font-size: font.$xxxl-size;
+            transform: translateY(-4rem);
+        }
+    }
+}
+
+.instructions {
+    padding: 0px 25px 5px 25px;
+    width: 100%;
+    font-size: font.$md-size;
+    text-align: left;
+    margin: 25px 0 0px 0;
+
+    @media screen and (min-width: 1200px) {
+        text-align: center;
+        margin: 25px 0 45px 0;
+        width: 50%;
+    }
+}
+
+.output {
+    display: flex;
+}
+
+.output__item {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 15px 10px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+
+    p {
+        margin-right: 25px;
+    }
+}
+
+.centerMe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeTakenContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        border-bottom: 1px solid black;
+        padding: 25px;
+    }
+}
