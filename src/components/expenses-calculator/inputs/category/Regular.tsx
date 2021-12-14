@@ -20,14 +20,30 @@ const Regular = () => {
     const alltimeFrames = useAppSelector(getTimeframe)
     const dispatch = useAppDispatch()
 
-    const [inputs, setInputs] = useState({
+    type Inputs = {
+        subscriptionFees: number
+        memberships: number
+        personalInsurance: number
+        personalDebt: number
+        regularMiscellaneous: number
+    }
+
+    type TimeFrames = {
+        subscriptionFees: string
+        memberships: string
+        personalInsurance: string
+        personalDebt: string
+        regularMiscellaneous: string
+    }
+
+    const [inputs, setInputs] = useState<Inputs>({
         subscriptionFees: subscriptionFees || 0,
         memberships: memberships || 0,
         personalInsurance: personalInsurance || 0,
         personalDebt: personalDebt || 0,
         regularMiscellaneous: regularMiscellaneous || 0,
     })
-    const [timeFrame, setTimeFrame] = useState({
+    const [timeFrame, setTimeFrame] = useState<TimeFrames>({
         subscriptionFees: alltimeFrames.subscriptionFees || MONTHLY,
         memberships: alltimeFrames.memberships || MONTHLY,
         personalInsurance: alltimeFrames.personalInsurance || MONTHLY,
@@ -60,7 +76,6 @@ const Regular = () => {
             <InputMuiSelect
                 name="subscriptionFees"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Subscription Fees"
                 value={subscriptionFees}
                 handleTimeFrame={handleTimeFrame}
@@ -69,7 +84,6 @@ const Regular = () => {
             <InputMuiSelect
                 name="memberships"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Memberships"
                 value={memberships}
                 handleTimeFrame={handleTimeFrame}
@@ -78,7 +92,6 @@ const Regular = () => {
             <InputMuiSelect
                 name="personalInsurance"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="PersonalInsurance"
                 value={personalInsurance}
                 handleTimeFrame={handleTimeFrame}
@@ -87,7 +100,6 @@ const Regular = () => {
             <InputMuiSelect
                 name="personalDebt"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="PersonalDebt"
                 value={personalDebt}
                 handleTimeFrame={handleTimeFrame}
@@ -96,7 +108,6 @@ const Regular = () => {
             <InputMuiSelect
                 name="regularMiscellaneous"
                 onChange={handleChange}
-                currencySymbol="$"
                 label="Regular Miscellaneous"
                 value={regularMiscellaneous}
                 handleTimeFrame={handleTimeFrame}
