@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
+import HighchartsReact from 'highcharts-react-official'
+import Highcharts from 'highcharts'
 import numeral from 'numeral'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
@@ -262,123 +264,210 @@ const OutputComponent = () => {
         dispatch(calculateExpensesTotals(expenseCalculateTotals))
     }, [dispatch, expenseCalculateTotals, totalIncomeWithTimeFrames])
 
+    const config = {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie',
+        },
+        title: {
+            text: 'Expenses Breakdown',
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+        },
+        credits: {
+            enabled: false,
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%',
+            },
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false,
+                },
+                showInLegend: true,
+            },
+        },
+
+        series: [
+            {
+                name: 'Totals',
+                colorByPoint: true,
+                data: [
+                    {
+                        name: 'Housing Expenses',
+                        y: Number(totalHomeExpensesWithTimeFrames),
+                        sliced: true,
+                        selected: true,
+                        color: '#3498DB',
+                    },
+                    {
+                        name: 'Everyday Expenses',
+                        y: Number(totalEverydayExpensesWithTimeFrames),
+                        color: '#27AE60',
+                    },
+                    {
+                        name: 'Regular Expenses',
+                        y: Number(regularExpensesTotalWithTimeFrames),
+                        color: '#CB4335',
+                    },
+                    {
+                        name: 'Personal Expenses',
+                        y: Number(personalExpensesTotalWithTimeFrames),
+                        color: '#8E44AD',
+                    },
+                ],
+            },
+        ],
+    }
+
+    const [showChart, setShowChart] = useState(false)
+
+    const toogleChart = () => {
+        setShowChart((prev) => !prev)
+    }
+
     return (
         <div className={styles.container}>
-            <Button variant="outlined">Show Expense Breakdown</Button>
-            <div className={styles.container__output}>
-                <p className={styles.title}>
-                    <KeyboardArrowRightIcon
-                        style={{
-                            color: '#3498DB',
-                            marginRight: '5px',
-                        }}
-                    />
-                    Total Income:
-                </p>
-                <p className={styles.output}>
-                    {numeral(totalIncomeWithTimeFrames).format('$0,0')}
-                </p>
-            </div>
-            <div className={styles.container__output}>
-                <p className={styles.title}>
-                    <KeyboardArrowRightIcon
-                        style={{
-                            color: '#27AE60',
-                            marginRight: '5px',
-                        }}
-                    />
-                    Housing Expenses:
-                </p>
-                <p className={styles.output}>
-                    {numeral(totalHomeExpensesWithTimeFrames).format('$0,0')}
-                </p>
-            </div>
-            <div className={styles.container__output}>
-                <p className={styles.title}>
-                    <KeyboardArrowRightIcon
-                        style={{
-                            color: '#CB4335',
-                            marginRight: '5px',
-                        }}
-                    />
-                    Everyday Expenses:
-                </p>
-                <p className={styles.output}>
-                    {numeral(totalEverydayExpensesWithTimeFrames).format(
-                        '$0,0'
-                    )}
-                </p>
-            </div>
-            <div className={styles.container__output}>
-                <p className={styles.title}>
-                    <KeyboardArrowRightIcon
-                        style={{
-                            color: '#8E44AD',
-                            marginRight: '5px',
-                        }}
-                    />
-                    Regular Expenses:
-                </p>
-                <p className={styles.output}>
-                    {numeral(regularExpensesTotalWithTimeFrames).format('$0,0')}
-                </p>
-            </div>
-            <div className={styles.container__output}>
-                <p className={styles.title}>
+            <Button variant="outlined" onClick={toogleChart}>
+                {showChart ? 'Show Totals' : 'Show Expense Breakdown'}
+            </Button>
+            {showChart ? (
+                <div className={styles.container__chart}>
+                    <HighchartsReact highcharts={Highcharts} options={config} />
+                </div>
+            ) : (
+                <>
                     {' '}
-                    <KeyboardArrowRightIcon
-                        style={{
-                            color: '#ff4da6',
-                            marginRight: '5px',
-                        }}
-                    />
-                    Personal Expenses:
-                </p>
-                <p className={styles.output}>
-                    {numeral(personalExpensesTotalWithTimeFrames).format(
-                        '$0,0'
-                    )}
-                </p>
-            </div>
-            <div className={styles.container__output}>
-                <p className={styles.title}>
-                    {' '}
-                    <KeyboardArrowRightIcon
-                        style={{
-                            color: '#ff6600',
-                            marginRight: '5px',
-                        }}
-                    />
-                    Total Savings:
-                </p>
-                <p className={styles.output}>
-                    {numeral(savingsExpensesTotalWithTimeFrames).format('$0,0')}
-                </p>
-            </div>
-            <div>
-                <Select
-                    name="time"
-                    value={selectTimeFrame}
-                    onChange={(e: any) => handleChange(e.target.value)}
-                    style={{
-                        marginLeft: '0.7rem',
-                        marginRight: '0.5rem',
-                        minWidth: '125.06px',
-                        fontSize: '16px',
-                        transform: 'translateY(0.1rem)',
-                        height: '25%',
-                    }}
-                    variant="standard"
-                    MenuProps={{
-                        disableScrollLock: true,
-                    }}
-                >
-                    <MenuItem value="weekly">weekly</MenuItem>
-                    <MenuItem value="fortnightly">fortnightly</MenuItem>
-                    <MenuItem value="monthly">monthly</MenuItem>
-                    <MenuItem value="annually">Annually</MenuItem>
-                </Select>
-            </div>
+                    <div className={styles.container__output}>
+                        <p className={styles.title}>
+                            <KeyboardArrowRightIcon
+                                style={{
+                                    color: '#3498DB',
+                                    marginRight: '5px',
+                                }}
+                            />
+                            Total Income:
+                        </p>
+                        <p className={styles.output}>
+                            {numeral(totalIncomeWithTimeFrames).format('$0,0')}
+                        </p>
+                    </div>
+                    <div className={styles.container__output}>
+                        <p className={styles.title}>
+                            <KeyboardArrowRightIcon
+                                style={{
+                                    color: '#27AE60',
+                                    marginRight: '5px',
+                                }}
+                            />
+                            Housing Expenses:
+                        </p>
+                        <p className={styles.output}>
+                            {numeral(totalHomeExpensesWithTimeFrames).format(
+                                '$0,0'
+                            )}
+                        </p>
+                    </div>
+                    <div className={styles.container__output}>
+                        <p className={styles.title}>
+                            <KeyboardArrowRightIcon
+                                style={{
+                                    color: '#CB4335',
+                                    marginRight: '5px',
+                                }}
+                            />
+                            Everyday Expenses:
+                        </p>
+                        <p className={styles.output}>
+                            {numeral(
+                                totalEverydayExpensesWithTimeFrames
+                            ).format('$0,0')}
+                        </p>
+                    </div>
+                    <div className={styles.container__output}>
+                        <p className={styles.title}>
+                            <KeyboardArrowRightIcon
+                                style={{
+                                    color: '#8E44AD',
+                                    marginRight: '5px',
+                                }}
+                            />
+                            Regular Expenses:
+                        </p>
+                        <p className={styles.output}>
+                            {numeral(regularExpensesTotalWithTimeFrames).format(
+                                '$0,0'
+                            )}
+                        </p>
+                    </div>
+                    <div className={styles.container__output}>
+                        <p className={styles.title}>
+                            {' '}
+                            <KeyboardArrowRightIcon
+                                style={{
+                                    color: '#ff4da6',
+                                    marginRight: '5px',
+                                }}
+                            />
+                            Personal Expenses:
+                        </p>
+                        <p className={styles.output}>
+                            {numeral(
+                                personalExpensesTotalWithTimeFrames
+                            ).format('$0,0')}
+                        </p>
+                    </div>
+                    <div className={styles.container__output}>
+                        <p className={styles.title}>
+                            {' '}
+                            <KeyboardArrowRightIcon
+                                style={{
+                                    color: '#ff6600',
+                                    marginRight: '5px',
+                                }}
+                            />
+                            Total Savings:
+                        </p>
+                        <p className={styles.output}>
+                            {numeral(savingsExpensesTotalWithTimeFrames).format(
+                                '$0,0'
+                            )}
+                        </p>
+                    </div>
+                    <div className={styles.selectInput}>
+                        <Select
+                            name="time"
+                            value={selectTimeFrame}
+                            onChange={(e: any) => handleChange(e.target.value)}
+                            style={{
+                                marginLeft: '0.7rem',
+                                marginRight: '0.5rem',
+                                minWidth: '125.06px',
+                                fontSize: '16px',
+                                transform: 'translateY(0.1rem)',
+                                height: '25%',
+                            }}
+                            variant="standard"
+                            MenuProps={{
+                                disableScrollLock: true,
+                            }}
+                        >
+                            <MenuItem value="weekly">weekly</MenuItem>
+                            <MenuItem value="fortnightly">fortnightly</MenuItem>
+                            <MenuItem value="monthly">monthly</MenuItem>
+                            <MenuItem value="annually">Annually</MenuItem>
+                        </Select>
+                    </div>
+                </>
+            )}
         </div>
     )
 }
