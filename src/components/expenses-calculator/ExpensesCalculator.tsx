@@ -5,11 +5,11 @@ import OutputComponent from './outputs/OutputComponent'
 
 const ExpensesCalculator = () => {
     return (
-        <div className={styles.container}>
+        <div className={styles.expense__container}>
             <div>
-                <h2 className={styles.title}>Income and Expenses</h2>
+                <h2 className={styles.expense__title}>Income and Expenses</h2>
             </div>
-            <div className={styles.instructions}>
+            <div className={styles.expense__instructions}>
                 <p>
                     {`
                     Add your earnings and any recurring expenses in this section.
@@ -17,15 +17,15 @@ const ExpensesCalculator = () => {
                     are spending the most money.`}
                 </p>
             </div>
-            <div className={styles.calculator}>
+            <div className={styles.expense__calculator}>
                 <div className={styles.calculator__slider}>
                     <StepperComponent />
                 </div>
-                <div className={styles.calculaotr__container}>
-                    <div className={styles.calculator__input}>
+                <div className={styles.expense__container_input}>
+                    <div>
                         <InputComponent />
                     </div>
-                    <div className={styles.calculator__output}>
+                    <div className={styles.expense__output}>
                         <OutputComponent />
                     </div>
                 </div>
