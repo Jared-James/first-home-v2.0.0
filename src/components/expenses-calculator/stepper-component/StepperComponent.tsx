@@ -23,8 +23,9 @@ function getStepsDesktop() {
     ]
 }
 
+let steps: string[]
+
 const StepperComponent = () => {
-    let steps
     const dispatch = useAppDispatch()
     const [activeStep, setActiveStep] = useState(0)
 
@@ -58,7 +59,7 @@ const StepperComponent = () => {
                 alternativeLabel
                 style={{ padding: '0' }}
             >
-                {steps?.map((label, index) => {
+                {steps?.map((label: string) => {
                     const stepProps: { completed?: boolean } = {}
                     const labelProps: {
                         optional?: ReactNode
