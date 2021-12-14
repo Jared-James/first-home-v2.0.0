@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import numeral from 'numeral'
+import Input from '@material-ui/core/Input'
 import styles from './depositCalculator.module.scss'
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
 import { getExpensesTotals } from '../../redux/features/expenses-calc'
@@ -8,16 +9,18 @@ import { selectAll } from '../../redux/features/mortgageCalculator'
 const DepositCalculator = () => {
     const { totalIncome, totalExpenses } = useAppSelector(getExpensesTotals)
     const { deposit } = useAppSelector(selectAll)
+    const [percentageValue, setPercentageValue] = useState(35)
 
-    const moneyLeftOver = totalIncome - totalExpenses
-    const percentToSave = 1
-
-    const totalTimeToDeposit = deposit / percentToSave
     let time = 'monthly'
+
+    const calcPercentageOfLeftOver = () => {
+        const result = totalIncome - totalExpenses
+        return percentageValue * 0.01 * result
+    }
 
     const calcTimeLeft = (initialDeposit, totalExpenses) => {
         const result = totalIncome - totalExpenses
-        const percentage = percentToSave * 0.01 * result
+        const percentage = percentageValue * 0.01 * result
         let convertToDay
 
         if (time === 'weekly') convertToDay = Math.floor(percentage / 7)
@@ -78,13 +81,25 @@ const DepositCalculator = () => {
 
                 <div className={styles.centerMe}>
                     <p>
-                        If i save {1}% of{' '}
+                        If i save{' '}
+                        <Input
+                            style={{
+                                width: '55px',
+                                fontSize: '1.3rem',
+                                marginLeft: '0.3rem',
+                            }}
+                            defaultValue={percentageValue}
+                            inputProps={{ inputMode: 'numeric' }}
+                            onChange={(e) =>
+                                setPercentageValue(Number(e.target.value))
+                            }
+                            type="number"
+                        />{' '}
+                        % of{' '}
                         {numeral(totalIncome - totalExpenses).format('$0,0')} I
                         will save{' '}
-                        {numeral((totalIncome - totalExpenses) * 0.01).format(
-                            '$0,0'
-                        )}{' '}
-                        per month
+                        {numeral(calcPercentageOfLeftOver()).format('$0,0')} per
+                        month
                     </p>
                 </div>
             </div>
