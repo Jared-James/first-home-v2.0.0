@@ -3,11 +3,13 @@
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin: 100px 5%;
     background: #fff;
     position: relative;
     overflow: hidden;
+    min-height: 75vh;
 }
 
 .title {

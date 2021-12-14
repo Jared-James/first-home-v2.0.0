@@ -84,7 +84,7 @@ const DepositCalculator = () => {
                         If i save{' '}
                         <Input
                             style={{
-                                width: '55px',
+                                width: '45px',
                                 fontSize: '1.3rem',
                                 marginLeft: '0.3rem',
                             }}
