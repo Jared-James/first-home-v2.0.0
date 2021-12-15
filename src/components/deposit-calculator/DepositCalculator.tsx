@@ -86,18 +86,18 @@ const DepositCalculator = () => {
                         {numeral(totalIncome).format('$0,0')}
                     </div>
                     <div className={styles.deposit__output_item}>
-                        <p>Total expesens:</p>
+                        <p>Total Expesens:</p>
                         {numeral(totalExpenses).format('$0,0')}
                     </div>
                     <div className={styles.deposit__output_item}>
-                        <p>After expenses</p>
+                        <p>After Expenses</p>
                         {numeral(totalIncome - totalExpenses).format('$0,0')}
                     </div>
                 </div>
 
                 <div className={styles.deposit__savings}>
                     <p>
-                        If i save{' '}
+                        If I save{' '}
                         <Input
                             className={styles.deposit__input}
                             defaultValue={percentageValue}
@@ -116,7 +116,7 @@ const DepositCalculator = () => {
                 </div>
             </div>
             <div className={styles.deposit__time_untill_deposit}>
-                <h3>Time untill deposit:</h3>
+                <h3>Time untill Deposit:</h3>
                 <div>
                     <h2>
                         {getFormatedStringFromDays(
