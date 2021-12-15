@@ -38,8 +38,8 @@ const LandingPage = () => {
                     </div>
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
-                            We then look your income and expenses to calculate
-                            how much money you have left over.
+                            We then look your income to calculate how much money
+                            you have remaining after expenses.
                         </p>
                         <LinkS to="expenses" smooth duration={500} spy>
                             <Button variant="outlined" type="submit">
