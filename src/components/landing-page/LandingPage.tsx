@@ -39,8 +39,7 @@ const LandingPage = () => {
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
                             We then look your income and expenses to calculate
-                            how much money you have left over to use towards
-                            your deposit
+                            how much money you have left over.
                         </p>
                         <LinkS to="expenses" smooth duration={500} spy>
                             <Button variant="outlined" type="submit">
@@ -57,9 +56,9 @@ const LandingPage = () => {
                     </div>
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
-                            Finally, we look at how much money you have left
-                            over and what saving a percentage of this money can
-                            do to acheving your deposit faster
+                            Finally, based on a percentage of your savings, we
+                            can work out how long it will take to achieve your
+                            deposit.
                         </p>
                         <LinkS to="deposit" smooth duration={500} spy>
                             <Button variant="outlined" type="submit">
