@@ -70,8 +70,10 @@ const DepositCalculator = () => {
             </div>
             <div className={styles.deposit_instructions}>
                 <p>
-                    Taking everything into account we are able to find out how
-                    long it will be before you reach your deposit.
+                    {`based on your savings, you can increase or decrease the
+                    amount you would like to you use towards your deposit. Then
+                    you'll be able to see how long it will take you to
+                    save for your deposit amount.`}
                 </p>
             </div>
             <div className={styles.deposit_output}>

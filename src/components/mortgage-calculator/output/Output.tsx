@@ -82,13 +82,13 @@ const Estimated = () => {
                         <span>{numeral(loanAmount).format('$0,0')}</span>
                     </p>
                     <p className={styles.output__totals_item}>
-                        <span> Total interest payable:</span>
+                        <span> Total Interest Payable:</span>
                         <span>
                             {numeral(totalInterestPayable).format('$0,0')}
                         </span>
                     </p>
                     <p className={styles.output__totals_item}>
-                        <span> Total amount payable:</span>
+                        <span> Total Amount Payable:</span>
                         <span>
                             {numeral(totalAmountPayable).format('$0,0')}
                         </span>

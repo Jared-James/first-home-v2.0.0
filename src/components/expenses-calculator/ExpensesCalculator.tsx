@@ -12,9 +12,9 @@ const ExpensesCalculator = () => {
             <div className={styles.expense__instructions}>
                 <p>
                     {`
-                    Add your earnings and any recurring expenses in this section.
-                    This will help determine how much you are saving and where you 
-                    are spending the most money.`}
+                    Enter your income and any recurring expenses in this section.
+                    You will be able to see what savings you have remaning after deducting expenses. 
+                    Toogle Show Expense Breakdown to see a breakdown of your expenses.`}
                 </p>
             </div>
             <div className={styles.expense__calculator}>
