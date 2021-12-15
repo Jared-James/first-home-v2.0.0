@@ -4,7 +4,7 @@ import styles from './MortgageCalc.module.scss'
 
 const MortgageCalc = () => {
     return (
-        <div className={styles.mortgage__container}>
+        <div className={styles.mortgage__container} id="mortgage">
             <div>
                 <h2 className={styles.mortgage__title}>Mortgage Repayment</h2>
             </div>

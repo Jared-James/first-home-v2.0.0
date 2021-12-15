@@ -27,7 +27,7 @@ const DepositCalculator = () => {
 
     const calculateSavingPercentage = () => {
         const result = totalIncome - totalExpenses
-        return Number(percentageValue * 0.01 * result)
+        return percentageValue * 0.01 * result
     }
 
     const calculateTimeUntillDeposit = (
@@ -64,7 +64,7 @@ const DepositCalculator = () => {
     }
 
     return (
-        <div className={styles.deposit__container}>
+        <div className={styles.deposit__container} id="deposit">
             <div>
                 <h2 className={styles.deposit__title}>Deposit Timeline</h2>
             </div>

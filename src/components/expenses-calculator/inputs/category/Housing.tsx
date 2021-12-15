@@ -64,7 +64,6 @@ const Housing = () => {
     }
 
     const handleTimeFrame = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target)
         setTimeFrame((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,

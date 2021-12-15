@@ -1,3 +1,4 @@
+import { Link as LinkS } from 'react-scroll'
 import Button from '@mui/material/Button'
 import styles from './LandingPage.module.scss'
 
@@ -18,12 +19,15 @@ const LandingPage = () => {
                     </div>
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
-                            Using the first mortgage calculator, we will find
-                            out what your mortgage repayments will be
+                            Using the mortgage calculator, we will take your
+                            deposit, the interest rate and the length of the
+                            loan to calculate your repayments.
                         </p>
-                        <Button variant="outlined" type="submit">
-                            Continue
-                        </Button>
+                        <LinkS to="mortgage" smooth duration={350} spy>
+                            <Button variant="outlined" type="submit">
+                                Continue
+                            </Button>
+                        </LinkS>
                     </div>
                 </div>
                 <div className={styles.landingPage__steps_item}>
@@ -34,12 +38,15 @@ const LandingPage = () => {
                     </div>
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
-                            We then look your spending habits and find out where
-                            your money is going
+                            We then look your income and expenses to calculate
+                            how much money you have left over to use towards
+                            your deposit
                         </p>
-                        <Button variant="outlined" type="submit">
-                            Continue
-                        </Button>
+                        <LinkS to="expenses" smooth duration={500} spy>
+                            <Button variant="outlined" type="submit">
+                                Continue
+                            </Button>
+                        </LinkS>
                     </div>
                 </div>
                 <div className={styles.landingPage__steps_item}>
@@ -50,13 +57,15 @@ const LandingPage = () => {
                     </div>
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
-                            Taking everything into account we are able to find
-                            out how long it will be before you reach your
-                            deposit
+                            Finally, we look at how much money you have left
+                            over and what saving a percentage of this money can
+                            do to acheving your deposit faster
                         </p>
-                        <Button variant="outlined" type="submit">
-                            Continue
-                        </Button>
+                        <LinkS to="deposit" smooth duration={500} spy>
+                            <Button variant="outlined" type="submit">
+                                Continue
+                            </Button>
+                        </LinkS>
                     </div>
                 </div>
             </div>

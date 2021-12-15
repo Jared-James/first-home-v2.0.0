@@ -5,7 +5,7 @@ import OutputComponent from './outputs/OutputComponent'
 
 const ExpensesCalculator = () => {
     return (
-        <div className={styles.expense__container}>
+        <div className={styles.expense__container} id="expenses">
             <div>
                 <h2 className={styles.expense__title}>Income and Expenses</h2>
             </div>
