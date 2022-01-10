@@ -10,6 +10,7 @@ import {
     getIncome,
     getTimeframe,
     calculateExpensesTotals,
+    expenseTotalMonthly,
 } from '../../../redux/features/expenses-calc'
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks'
 import styles from './outputComponent.module.scss'
@@ -277,7 +278,20 @@ const OutputComponent = () => {
 
     useEffect(() => {
         dispatch(calculateExpensesTotals(expenseCalculateTotals))
-    }, [dispatch, expenseCalculateTotals, totalIncomeWithTimeFrames])
+
+        dispatch(
+            expenseTotalMonthly({
+                totalExpenseDays: totalExpense,
+                totalIncomeDays: totalIncome,
+            })
+        )
+    }, [
+        dispatch,
+        expenseCalculateTotals,
+        totalExpense,
+        totalIncome,
+        totalIncomeWithTimeFrames,
+    ])
 
     /* config for hightcharts */
 

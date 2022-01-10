@@ -4,6 +4,7 @@ import {
     calculateExpenses,
     calculateTimeframe,
     calculateExpensesTotals,
+    expenseTotalMonthly,
 } from './actions'
 
 // stepper component state: keeps track of what position in the stepper the user is.
@@ -217,7 +218,20 @@ export const totalExpenseReducer = createReducer(
     initialStateExpensesTotals,
     (builder) => {
         builder.addCase(calculateExpensesTotals, (state, action) => {
-            console.log('payload redux', action)
+            return { ...state, ...action.payload }
+        })
+    }
+)
+
+export const initialStateExpenseMonthly = {
+    totalExpenseDays: 0,
+    totalIncomeDays: 0,
+}
+
+export const totalExpenseReducerMonthly = createReducer(
+    initialStateExpenseMonthly,
+    (builder) => {
+        builder.addCase(expenseTotalMonthly, (state, action) => {
             return { ...state, ...action.payload }
         })
     }

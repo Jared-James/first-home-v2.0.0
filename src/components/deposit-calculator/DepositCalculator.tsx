@@ -3,7 +3,10 @@ import numeral from 'numeral'
 import Input from '@material-ui/core/Input'
 import styles from './depositCalculator.module.scss'
 import { useAppSelector } from '../../redux/hooks'
-import { getExpensesTotals } from '../../redux/features/expenses-calc'
+import {
+    getExpensesTotals,
+    getExpenseTotalMonthly,
+} from '../../redux/features/expenses-calc'
 import { selectAll } from '../../redux/features/mortgageCalculator'
 import {
     WEEKLY,
@@ -22,6 +25,9 @@ const DepositCalculator = () => {
     const { totalIncome, totalExpenses, timeFrame } =
         useAppSelector(getExpensesTotals)
     const { deposit } = useAppSelector(selectAll)
+    const { totalExpenseDays, totalIncomeDays } = useAppSelector(
+        getExpenseTotalMonthly
+    )
     const [percentageValue, setPercentageValue] = useState<number>(35)
     const [time] = useState<string>(MONTHLY)
 
@@ -34,13 +40,9 @@ const DepositCalculator = () => {
         initialDeposit: number,
         expenses: number
     ) => {
-        const result = totalIncome - expenses
+        const result = totalIncomeDays - expenses
         const percentage = percentageValue * 0.01 * result
-        let convertToDay = 0
-        if (time === WEEKLY) convertToDay = Math.floor(percentage / 7)
-        if (time === FORTNIGHTLY) convertToDay = Math.floor(percentage / 14)
-        if (time === MONTHLY) convertToDay = Math.floor(percentage / 30.4167)
-        if (time === ANNUALLY) convertToDay = Math.floor(percentage / 365)
+        const convertToDay = Math.floor(percentage / 30.4167)
 
         return initialDeposit / convertToDay
     }
@@ -120,7 +122,10 @@ const DepositCalculator = () => {
                 <div>
                     <h2>
                         {getFormatedStringFromDays(
-                            calculateTimeUntillDeposit(deposit, totalExpenses)
+                            calculateTimeUntillDeposit(
+                                deposit,
+                                totalExpenseDays
+                            )
                         )}
                     </h2>
                 </div>

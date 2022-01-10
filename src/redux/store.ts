@@ -5,6 +5,7 @@ import {
     stepperReducer,
     timeframeReducer,
     totalExpenseReducer,
+    totalExpenseReducerMonthly,
 } from './features/expenses-calc'
 
 export const store = configureStore({
@@ -14,6 +15,7 @@ export const store = configureStore({
         expensesReducer,
         timeframeReducer,
         totalExpenseReducer,
+        totalExpenseReducerMonthly,
     },
     devTools: true,
 })
