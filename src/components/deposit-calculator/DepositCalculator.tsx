@@ -8,18 +8,7 @@ import {
     getExpenseTotalMonthly,
 } from '../../redux/features/expenses-calc'
 import { selectAll } from '../../redux/features/mortgageCalculator'
-import {
-    WEEKLY,
-    FORTNIGHTLY,
-    MONTHLY,
-    ANNUALLY,
-    YEAR,
-    YEARS,
-    MONTH,
-    MONTHS,
-    DAY,
-    DAYS,
-} from '../../constants/time'
+import { YEAR, YEARS, MONTH, MONTHS, DAY, DAYS } from '../../constants/time'
 
 const DepositCalculator = () => {
     const { totalIncome, totalExpenses, timeFrame } =
@@ -29,7 +18,6 @@ const DepositCalculator = () => {
         getExpenseTotalMonthly
     )
     const [percentageValue, setPercentageValue] = useState<number>(35)
-    const [time] = useState<string>(MONTHLY)
 
     const calculateSavingPercentage = () => {
         const result = totalIncome - totalExpenses
@@ -104,9 +92,9 @@ const DepositCalculator = () => {
                             className={styles.deposit__input}
                             defaultValue={percentageValue}
                             inputProps={{ inputMode: 'numeric' }}
-                            onChange={(e) =>
-                                setPercentageValue(Number(e.target.value))
-                            }
+                            onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                            ) => setPercentageValue(Number(e.target.value))}
                             type="number"
                         />{' '}
                         % of{' '}
