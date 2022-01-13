@@ -4,9 +4,9 @@
 
 ---
 
-1) Calculates your mortgage repayments 
+1) Calculates your mortgage repayments
 2) Calculates your total income & expenses
-3) Calculates how long until you reach your house deposit goal based on the above factors.
+3) Calculates how long until you reach your house deposit goal based on the above factors
 
 ---
 
