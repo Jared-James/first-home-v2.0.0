@@ -14,7 +14,7 @@ const LandingPage = () => {
                 <div className={styles.landingPage__steps_item}>
                     <div className={styles.landingPage__title}>
                         <h2 className={styles.landingPage__title_text}>
-                            Step one
+                            Mortgage Repayment
                         </h2>
                     </div>
                     <div className={styles.landingPage__Body}>
@@ -33,7 +33,7 @@ const LandingPage = () => {
                 <div className={styles.landingPage__steps_item}>
                     <div className={styles.title}>
                         <h2 className={styles.landingPage__title_text}>
-                            Step Two
+                            Income and Expenses
                         </h2>
                     </div>
                     <div className={styles.landingPage__Body}>
@@ -51,14 +51,14 @@ const LandingPage = () => {
                 <div className={styles.landingPage__steps_item}>
                     <div className={styles.title}>
                         <h2 className={styles.landingPage__title_text}>
-                            Step Three
+                            Deposit Timeline
                         </h2>
                     </div>
                     <div className={styles.landingPage__Body}>
                         <p className={styles.landingPage__Body_text}>
-                            Finally, based on a percentage of your savings, we
-                            can work out how long it will take to achieve your
-                            deposit.
+                            Finally, based on a percentage of your savings and
+                            income, we can work out how long it will take to
+                            achieve your deposit.
                         </p>
                         <LinkS to="deposit" smooth duration={500} spy>
                             <Button variant="outlined" type="submit">

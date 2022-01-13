@@ -3,10 +3,14 @@
 .landingPage__container {
     min-height: 93vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     background: #fff;
+    margin: 0 0;
     @media screen and (min-width: 1000px) {
         flex-direction: row;
+        margin: 0 5%;
     }
 }
 
@@ -62,7 +66,7 @@
     padding: 10px 0px;
 
     @media screen and (min-width: 1200px) {
-        font-size: font.$xxl-size;
+        font-size: font.$xl-size;
         padding: 10px;
     }
 }
@@ -72,7 +76,7 @@
     padding: 10px 0px;
     margin-bottom: 10px;
     @media screen and (min-width: 1200px) {
-        font-size: font.$xl-size;
+        font-size: font.$lg-size;
         padding: 10px;
     }
 }
