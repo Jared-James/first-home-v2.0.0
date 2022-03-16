@@ -2,10 +2,10 @@ import numeral from 'numeral'
 import React, { useEffect, useState } from 'react'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import { selectAll } from '../../../redux/features/mortgageCalculator'
-import { useAppSelector } from '../../../redux/hooks'
+import { selectAll } from '../../../../redux/features/mortgageCalculator'
+import { useAppSelector } from '../../../../redux/hooks'
 import styles from './output.module.scss'
-import { WEEKLY, FORTNIGHTLY, MONTHLY } from '../../../constants/time'
+import { WEEKLY, FORTNIGHTLY, MONTHLY } from '../../../../constants/time'
 
 const Estimated = () => {
     const { housePrice, deposit, interest, lengthOfLoan } =

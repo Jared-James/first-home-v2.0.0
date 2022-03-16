@@ -1,9 +1,9 @@
 import Button from '@mui/material/Button'
 import { useState, ChangeEvent } from 'react'
-import InputMui from '../../utils/input-mui/InputMui'
+import InputMui from '../../../utils/input-mui/InputMui'
 import style from './mortgageInput.module.scss'
-import { useAppDispatch } from '../../../redux/hooks'
-import { updateHousePrice } from '../../../redux/features/mortgageCalculator'
+import { useAppDispatch } from '../../../../redux/hooks'
+import { updateHousePrice } from '../../../../redux/features/mortgageCalculator'
 
 interface Inputs {
     housePrice: number

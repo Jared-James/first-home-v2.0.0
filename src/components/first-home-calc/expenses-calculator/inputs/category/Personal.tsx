@@ -1,13 +1,13 @@
 import { useEffect, useState, ChangeEvent } from 'react'
-import InputMuiSelect from '../../../utils/input-mui-select/InputMuiSelect'
-import { useAppSelector, useAppDispatch } from '../../../../redux/hooks'
+import InputMuiSelect from '../../../../utils/input-mui-select/InputMuiSelect'
+import { useAppSelector, useAppDispatch } from '../../../../../redux/hooks'
 import {
     calculateExpenses,
     getIncome,
     getTimeframe,
     calculateTimeframe,
-} from '../../../../redux/features/expenses-calc'
-import { MONTHLY } from '../../../../constants/time'
+} from '../../../../../redux/features/expenses-calc'
+import { MONTHLY } from '../../../../../constants/time'
 
 interface Inputs {
     entertainment: number

@@ -11,10 +11,15 @@ import {
     getTimeframe,
     calculateExpensesTotals,
     expenseTotalMonthly,
-} from '../../../redux/features/expenses-calc'
-import { useAppSelector, useAppDispatch } from '../../../redux/hooks'
+} from '../../../../redux/features/expenses-calc'
+import { useAppSelector, useAppDispatch } from '../../../../redux/hooks'
 import styles from './outputComponent.module.scss'
-import { WEEKLY, FORTNIGHTLY, MONTHLY, ANNUALLY } from '../../../constants/time'
+import {
+    WEEKLY,
+    FORTNIGHTLY,
+    MONTHLY,
+    ANNUALLY,
+} from '../../../../constants/time'
 
 interface ExpenseCalculator {
     totalIncome: number

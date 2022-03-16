@@ -1,0 +1,15 @@
+@use 'styles/utilities/font';
+
+.landingPage__container {
+    min-height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    margin: 0 0;
+}
+
+.landingPage__title {
+    padding: 25px;
+}

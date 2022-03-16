@@ -5,8 +5,8 @@ import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Button from '@mui/material/Button'
-import { useAppDispatch } from '../../../redux/hooks'
-import { getStepperCount } from '../../../redux/features/expenses-calc'
+import { useAppDispatch } from '../../../../redux/hooks'
+import { getStepperCount } from '../../../../redux/features/expenses-calc'
 
 function getSteps() {
     return ['Income', 'Housing ', 'Everday ', 'Regular ', 'Personal', 'Savings']

@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import numeral from 'numeral'
 import Input from '@material-ui/core/Input'
 import styles from './depositCalculator.module.scss'
-import { useAppSelector } from '../../redux/hooks'
+import { useAppSelector } from '../../../redux/hooks'
 import {
     getExpensesTotals,
     getExpenseTotalMonthly,
-} from '../../redux/features/expenses-calc'
-import { selectAll } from '../../redux/features/mortgageCalculator'
-import { YEAR, YEARS, MONTH, MONTHS, DAY, DAYS } from '../../constants/time'
+} from '../../../redux/features/expenses-calc'
+import { selectAll } from '../../../redux/features/mortgageCalculator'
+import { YEAR, YEARS, MONTH, MONTHS, DAY, DAYS } from '../../../constants/time'
 
 const DepositCalculator = () => {
     const { totalIncome, totalExpenses, timeFrame } =

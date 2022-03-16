@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../../redux/hooks'
-import { getStepper } from '../../../redux/features/expenses-calc'
+import { useAppSelector } from '../../../../redux/hooks'
+import { getStepper } from '../../../../redux/features/expenses-calc'
 import Income from './category/Income'
 import Housing from './category/Housing'
 import Everyday from './category/Everyday'
