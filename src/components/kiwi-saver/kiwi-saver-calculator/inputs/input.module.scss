@@ -1,0 +1,38 @@
+.container {
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(41, 155, 231);
+    padding: 50px;
+}
+
+.container__inputs {
+    // background-color: antiquewhite;
+    height: 100%;
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.deposit__output_item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 15px 5px;
+    min-width: 300px;
+    background: rgb(255, 255, 255);
+
+    @media screen and (min-width: 1200px) {
+        padding: 15px 10px;
+        margin: 10px 0px 0 0;
+        p {
+            margin-right: 100px;
+        }
+    }
+}

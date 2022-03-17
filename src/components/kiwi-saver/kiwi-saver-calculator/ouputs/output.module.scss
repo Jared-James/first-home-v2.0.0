@@ -1,0 +1,10 @@
+.container {
+    min-width: 50%;
+    display: flex;
+    align-items: center;
+    border: 1px solid orange;
+}
+
+.container__chart {
+    width: 100%;
+}
