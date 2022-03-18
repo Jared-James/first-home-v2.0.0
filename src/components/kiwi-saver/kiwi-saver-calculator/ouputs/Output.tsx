@@ -19,65 +19,75 @@ export const Output = () => {
         salary,
         depositTime,
     } = kiwiSaverState
+
     const dataSet: any = []
+    const yearsToGrow = []
+    const money: any = []
 
-    // F = P*(1+rate)^nper + A*( ((1+rate)^nper - 1)/rate )
-    // rate = ((1+r/n)^(n/p))-1
-    // nper = p*t
-
-    /*
-    calculates a percentage based on the users balance
-    the percentage of return & inflation amount which is 2%
-    */
-
-    const calculatePercentage = (amount: any, percent: any) => {
-        return Number(amount) * (percent / 100)
+    // rate per payment period
+    const Rate = (
+        interest: number,
+        payment: number,
+        compoundFrequency: number
+    ): number => {
+        return (
+            Math.pow(
+                1 + interest / compoundFrequency,
+                compoundFrequency / payment
+            ) - 1
+        )
     }
 
-    /* 
-    ADDS USERS AGE TO ARRAY
-    */
-    const yearsToGrow = []
+    // the number of payment periods per year * the time in years
+    const nPer = (payment: number, years: number): number => {
+        return payment * years
+    }
+
+    const FV = (
+        initial: number,
+        interest: number,
+        nper: number,
+        payment: number
+    ): number => {
+        return (
+            initial * Math.pow(1 + interest, nper) +
+            (payment * (Math.pow(1 + interest, nper) - 1)) / interest
+        )
+    }
+
+    const initial = 0
+    const payment = 1000
+    const years = 35
+    const compoundFrequency = 1
+    const paymentFrequency = 12
+    const interest = 0.045
+
+    const rate = Rate(interest, paymentFrequency, compoundFrequency)
+    let fv = 0
+
     for (let i = Number(personAge); i <= 65; i++) {
         yearsToGrow.push(i.toString())
     }
 
-    /* 
-    ADDS COMPOUNDING BALANCE TO ARRAY
-    */
-    const money: any = []
+    for (let i = 1; i <= 65; i++) {
+        const nper = nPer(paymentFrequency, i)
 
-    let totalInterest = 0
-    const principal = contributedAmount
-    const rate = 0.035
-    const n = 1
-    const currentBalance = 100000
-    let total = 0
+        fv = FV(initial, rate, nper, payment)
 
-    const compoundInterest = (p, t, r, n) => {
-        const principalAmount = Number(principal) * 12
-        const amount = principalAmount * Math.pow(1 + r / n, n * t)
-
-        totalInterest += amount - principalAmount
-        total += principalAmount + totalInterest
-
-        return {
-            total: Number(total.toFixed(0)),
-            interest: Number(totalInterest.toFixed(0)),
+        const totalPayments = payment * nper + initial
+        const totalInterest = fv - totalPayments
+        const graphItem = {
+            year: i,
+            totalPayment: totalPayments.toFixed(0),
+            totalInterest: totalInterest,
+            totalMoney: fv,
         }
-    }
 
-    for (let i = Number(personAge); i <= 65; i++) {
-        const result = compoundInterest(
-            principal,
-            personAge.length - 1,
-            rate,
-            n
-        )
-
-        console.log(total)
-
-        money.push(result.total.toFixed(0))
+        money.push({
+            y: graphItem.totalMoney.toFixed(0),
+            totalPayments: Number(totalPayments),
+            totalInterest: totalInterest,
+        })
     }
 
     /*
@@ -87,16 +97,40 @@ export const Output = () => {
     */
 
     yearsToGrow.forEach((element, index) => {
-        const obj = { x: '', y: '' }
-        obj.x = element.toString()
-        obj.y = money[index].toString()
+        const obj = { x: '', y: '', totalPayments: '', totalInterest: '' }
+        obj.x = element
+        obj.y = money[index]?.y
+        obj.totalPayments = money[index]?.totalPayments
+        obj.totalInterest = money[index]?.totalInterest
         dataSet.push(obj)
     })
 
     const options = {
         plugins: {
-            title: {
+            legend: {
                 display: false,
+            },
+            locale: 'en-US',
+            tooltip: {
+                enabled: true,
+                displayColors: false,
+                padding: 15,
+                callbacks: {
+                    title: (tooltipItem: any) => {
+                        return `Age: ${tooltipItem[0].label}`
+                    },
+                    label: (tooltipItem: any) => {
+                        return `Total amount      $ ${tooltipItem.formattedValue}`
+                    },
+                    afterLabel: (tooltipItem: any) => {
+                        return `Total Payments  $ ${tooltipItem.raw.totalPayments.toLocaleString()}`
+                    },
+                    afterBody: (tooltipItem: any) => {
+                        return `Total interest      $ ${parseFloat(
+                            tooltipItem[0].raw.totalInterest.toFixed(0)
+                        ).toLocaleString()}`
+                    },
+                },
             },
         },
         scales: {
@@ -105,23 +139,41 @@ export const Output = () => {
                 ticks: {
                     max: 100,
                     min: 0,
-                    stepSize: 1,
+                    stepSize: 2,
+                },
+                grid: {
+                    drawOnChartArea: false,
                 },
             },
             y: {
                 type: 'linear',
+                grid: {
+                    drawOnChartArea: false,
+                },
             },
+        },
+        elements: {
+            point: {
+                radius: 0,
+            },
+        },
+        interaction: {
+            intersect: false,
         },
     }
 
     const data = {
-        // labels,
         datasets: [
             {
                 data: dataSet,
-                label: 'Total',
-                borderColor: '#3e95cd',
+                borderWidth: 1.5,
+                borderColor: '#ff0000',
                 backgroundColor: '#7bb6dd',
+                fill: {
+                    target: 'origin',
+                    above: '#3700ff', // Area will be red above the origin
+                    below: '#ff0000', // And blue below the origin
+                },
             },
         ],
     }
@@ -129,7 +181,12 @@ export const Output = () => {
     return (
         <div className={styles.container}>
             <div className={styles.container__chart}>
-                <Chart type="line" data={data} options={options} />
+                <Chart
+                    id="custom_canvas_background_color"
+                    type="line"
+                    data={data}
+                    options={options}
+                />
             </div>
         </div>
     )
