@@ -24,13 +24,10 @@ export const InputComponent = () => {
             ...prevState,
             [e.target.name]: e.target.value.replaceAll(',', ''),
         }))
-
-        console.log(kiwiSaverInputs)
     }
 
     const handleSubmit = () => {
         dispatch(updateKiwiSaverState(kiwiSaverInputs))
-        console.log('submitted', kiwiSaverInputs)
     }
 
     const selectStyle = {
@@ -41,30 +38,40 @@ export const InputComponent = () => {
         <div className={styles.container}>
             <div className={styles.container__inputs}>
                 <div className={styles.deposit__output_item}>
-                    <p>How old are you?</p>{' '}
+                    <p>Your age</p>{' '}
                     <Input
                         name="personAge"
                         onChange={handleChange}
                         type="number"
+                        style={{ width: '150px' }}
                     />
                 </div>
                 <div className={styles.deposit__output_item}>
-                    <p>Current Balance:</p>
-                    <CurrencyTextField name="balance" onChange={handleChange} />
+                    <p>Current balance:</p>
+                    <CurrencyTextField
+                        name="balance"
+                        onChange={handleChange}
+                        style={{ width: '150px' }}
+                    />
                 </div>
                 <div className={styles.deposit__output_item}>
-                    <p>Salary:</p>
-                    <CurrencyTextField name="salary" onChange={handleChange} />
+                    <p>Annual salary:</p>
+                    <CurrencyTextField
+                        name="salary"
+                        onChange={handleChange}
+                        style={{ width: '150px' }}
+                    />
                 </div>
                 <div className={styles.deposit__output_item}>
-                    <p>contributed amount per week</p>
+                    <p>Contributed amount per month</p>
                     <CurrencyTextField
                         name="contributedAmount"
                         onChange={handleChange}
+                        style={{ width: '150px' }}
                     />
                 </div>
                 <div className={styles.deposit__output_item}>
-                    <p>KiwiSaver Scheme:</p>
+                    <p>KiwiSaver scheme:</p>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -76,9 +83,7 @@ export const InputComponent = () => {
                             disableScrollLock: true,
                         }}
                         variant="standard"
-                        style={{
-                            width: '250px',
-                        }}
+                        style={{ width: '150px' }}
                     >
                         <MenuItem value="Balanced" style={selectStyle}>
                             Balanced
@@ -101,8 +106,9 @@ export const InputComponent = () => {
                         type="number"
                         name="depositTime"
                         onChange={handleChange}
+                        style={{ width: '150px' }}
+                        placeholder="Years"
                     />
-                    Years
                 </div>
                 <Button
                     variant="contained"

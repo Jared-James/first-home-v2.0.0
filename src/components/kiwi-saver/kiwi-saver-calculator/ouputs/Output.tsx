@@ -1,7 +1,7 @@
 /* eslint-disable prefer-exponentiation-operator */
 /* eslint-disable no-restricted-properties */
 /* eslint-disable no-plusplus */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Chart as ChartJS, defaults } from 'chart.js'
 import { Chart } from 'react-chartjs-2'
 import 'chart.js/auto'
@@ -19,6 +19,10 @@ export const Output = () => {
         salary,
         depositTime,
     } = kiwiSaverState
+
+    useEffect(() => {
+        console.log(kiwiSaverState)
+    }, [kiwiSaverState])
 
     const dataSet: any = []
     const yearsToGrow = []
@@ -44,7 +48,7 @@ export const Output = () => {
     }
 
     const FV = (
-        initial: number,
+        initial: any,
         interest: number,
         nper: number,
         payment: number
@@ -56,11 +60,14 @@ export const Output = () => {
     }
 
     const initial = 0
-    const payment = 1000
-    const years = 35
     const compoundFrequency = 1
     const paymentFrequency = 12
-    const interest = 0.045
+    let interest = 0.045
+
+    if (kiwiSaverScheme === 'Conservative') interest = 0.025
+    if (kiwiSaverScheme === 'Balanced') interest = 0.035
+    if (kiwiSaverScheme === 'Growth') interest = 0.045
+    if (kiwiSaverScheme === 'Aggressive') interest = 0.055
 
     const rate = Rate(interest, paymentFrequency, compoundFrequency)
     let fv = 0
@@ -72,9 +79,9 @@ export const Output = () => {
     for (let i = 1; i <= 65; i++) {
         const nper = nPer(paymentFrequency, i)
 
-        fv = FV(initial, rate, nper, payment)
+        fv = FV(balance, rate, nper, Number(contributedAmount))
 
-        const totalPayments = payment * nper + initial
+        const totalPayments = Number(contributedAmount) * nper + initial
         const totalInterest = fv - totalPayments
         const graphItem = {
             year: i,
@@ -139,7 +146,7 @@ export const Output = () => {
                 ticks: {
                     max: 100,
                     min: 0,
-                    stepSize: 2,
+                    stepSize: 1,
                 },
                 grid: {
                     drawOnChartArea: false,
@@ -149,6 +156,27 @@ export const Output = () => {
                 type: 'linear',
                 grid: {
                     drawOnChartArea: false,
+                },
+                ticks: {
+                    stepSize: 300000,
+                    callback: function (value: any) {
+                        const ranges = [
+                            { divider: 1e6, suffix: 'M' },
+                            { divider: 1e3, suffix: 'k' },
+                        ]
+                        function formatNumber(n: any) {
+                            for (let i = 0; i < ranges.length; i++) {
+                                if (n >= ranges[i].divider) {
+                                    return (
+                                        (n / ranges[i].divider).toString() +
+                                        ranges[i].suffix
+                                    )
+                                }
+                            }
+                            return n
+                        }
+                        return `$${formatNumber(value)}`
+                    },
                 },
             },
         },
@@ -167,13 +195,13 @@ export const Output = () => {
             {
                 data: dataSet,
                 borderWidth: 1.5,
-                borderColor: '#ff0000',
+                borderColor: '#2500aa',
                 backgroundColor: '#7bb6dd',
-                fill: {
-                    target: 'origin',
-                    above: '#3700ff', // Area will be red above the origin
-                    below: '#ff0000', // And blue below the origin
-                },
+                // fill: {
+                //     target: 'origin',
+                //     above: '#00d8e7', // Area will be red above the origin
+                //     below: '#ff0000', // And blue below the origin
+                // },
             },
         ],
     }

@@ -11,12 +11,12 @@ type kiwiSaver = {
 }
 
 const initialStateKiwiSaver: kiwiSaver = {
-    personAge: '',
-    balance: '',
-    salary: '',
-    contributedAmount: '',
+    personAge: '18',
+    balance: '0',
+    salary: '0',
+    contributedAmount: '1000',
     kiwiSaverScheme: 'Balanced',
-    depositTime: '',
+    depositTime: '35',
 }
 
 export const kiwiSaverReducer = createReducer(
