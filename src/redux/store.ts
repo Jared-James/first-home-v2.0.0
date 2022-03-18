@@ -7,6 +7,7 @@ import {
     totalExpenseReducer,
     totalExpenseReducerMonthly,
 } from './features/expenses-calc'
+import { kiwiSaverReducer } from './features/kiwisaver-calculator'
 
 export const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
         timeframeReducer,
         totalExpenseReducer,
         totalExpenseReducerMonthly,
+        kiwiSaverReducer,
     },
     devTools: true,
 })

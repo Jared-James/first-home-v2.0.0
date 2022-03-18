@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div className={styles.container}>
             {' '}
-            <p>Made by © Jared James {new Date().getFullYear()}</p>
+            <p>Made by no one for someone {new Date().getFullYear()}</p>
         </div>
     )
 }
