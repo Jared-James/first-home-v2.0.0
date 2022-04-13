@@ -14,7 +14,7 @@ const LandingPage = () => {
                     <p> 2. Calculate your expenses. </p>
                     <p> 3. Get a time frame for achieveing your deposit.</p>
                     <div className={styles.landingPage__button}>
-                        <LinkS to="expenses" smooth duration={500} spy>
+                        <LinkS to="mortgage" smooth duration={500} spy>
                             <p className={styles.landingPage__button_text}>
                                 Get started
                             </p>
