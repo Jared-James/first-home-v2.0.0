@@ -16,7 +16,7 @@ const LandingPage = () => {
                     <div className={styles.landingPage__button}>
                         <LinkS to="expenses" smooth duration={500} spy>
                             <p className={styles.landingPage__button_text}>
-                                Get started ...
+                                Get started
                             </p>
                         </LinkS>
                     </div>

@@ -56,10 +56,6 @@
 .landingPage__button {
     text-align: center;
     color: #fff;
-
-    &:hover {
-        cursor: pointer;
-    }
 }
 
 .landingPage__button_text {
@@ -68,4 +64,9 @@
     margin: 0 auto;
     margin-top: 150px;
     font-size: 32px;
+    padding: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
