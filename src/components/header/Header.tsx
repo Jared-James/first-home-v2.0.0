@@ -9,7 +9,7 @@ const Header = () => {
             </div>
             <div className={styles.navigation__container}>
                 <nav>
-                    <ul className={styles.list}>
+                    {/* <ul className={styles.list}>
                         <LinkS to="mortgage" smooth duration={350} spy>
                             <li className={styles.list__item}>Mortgage</li>
                         </LinkS>
@@ -23,7 +23,7 @@ const Header = () => {
                                 Deposit Timeline
                             </li>
                         </LinkS>
-                    </ul>
+                    </ul> */}
                 </nav>
             </div>
         </header>
