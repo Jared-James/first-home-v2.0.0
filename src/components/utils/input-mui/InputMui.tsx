@@ -59,9 +59,9 @@ const InputMui = ({
                 className={styles.textField}
             />
 
-            <Tooltip title="This will be the tool tip" style={tooltipStyles}>
+            {/* <Tooltip title="This will be the tool tip" style={tooltipStyles}>
                 <HelpOutlineIcon />
-            </Tooltip>
+            </Tooltip> */}
         </div>
     )
 }
