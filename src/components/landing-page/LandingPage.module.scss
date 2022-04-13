@@ -7,29 +7,32 @@
     flex-direction: column;
     background: #fff;
     margin: 0 0;
-    @media screen and (min-width: 1000px) {
-        flex-direction: column;
-    }
 }
 
 .landingPage__title {
-    // border: 2px solid black;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     height: 93vh;
+
+    @media screen and (min-width: 1200px) {
+        flex-direction: row;
+    }
 }
 
 .landingPage__title_left {
-    font-size: font.$xl-size;
+    font-size: font.$xxxxl-size;
     padding: 10px 0px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Quicksand', sans-serif;
+    height: 30%;
     @media screen and (min-width: 1200px) {
         font-size: 72px;
         padding: 10px;
+        height: 100%;
     }
 }
 
@@ -39,11 +42,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
     font-family: 'Quicksand', sans-serif;
     background-color: black;
+    height: 100%;
+    text-align: center;
     @media screen and (min-width: 1200px) {
         font-size: 48px;
+        text-align: left;
     }
 
     & > p {
@@ -60,13 +65,17 @@
 
 .landingPage__button_text {
     border: 1px solid #fff;
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
-    margin-top: 150px;
-    font-size: 32px;
     padding: 10px;
-
+    margin-top: 15px;
     &:hover {
         cursor: pointer;
+    }
+
+    @media screen and (min-width: 1200px) {
+        margin-top: 150px;
+        font-size: 32px;
+        padding: 10px;
     }
 }
